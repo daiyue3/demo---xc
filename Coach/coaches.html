@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>教练中心</title>
+    <script src="__PUBLIC__/Weixin/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/Weixin/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Weixin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Weixin/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/Weixin/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/Weixin/css/coaches.css">
+</head>
+<body>
+    <div id="root" class="shop_wrapper">
+        <nav class="nav navbar-fixed-top list_nav clearfix" id="nav">
+            <!-- 头部 -->
+        
+                <div class="list_search pull-left text-center">
+                    <button class="btn-search"><i class="glyphicon glyphicon-search"></i></button>
+                    <div class="searchDiv">
+                        <form action="{:U('Home/Coach/search')}" method="post">
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control" placeholder="请输入搜索关键词" name="search">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                  </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="title pull-left">
+                    教练中心
+                </div>
+                <div class=" pull-right text-center clearfix">
+                    <img src="__PUBLIC__/Weixin/img/talk.png" alt="" style="width:2.5rem;margin-right: 2rem;">
+                </div>
+        </nav>
+        <!-- 智能排序 -->
+        <div class="nav-sort">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="dropdown">
+                        <a id="dLabel" role="button" data-toggle="dropdown" class="btn" data-target="#"
+                           href="javascript:;">
+                            全合肥<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu multi-level schools" role="menu" aria-labelledby="dropdownMenu">
+                            <!-- <li class="dropdown-submenu dropdown-submenu1">
+                                <a href="javascript:;" name="school">经开区</a>
+                                <ul class="dropdown-menu xiaoqu">
+                                    <li class="school"><a href="javascript:;" name="中心校区">百信学车一校区</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </li> -->
+                            
+                        </ul>
+                        <b class="xian"></b>
+                    </div>
+                    <div class="dropdown">
+                        <a id="chexin" role="button" data-toggle="dropdown" class="btn" data-target="#"
+                           href="javascript:;">科目<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu multi-level nav_menu1" role="menu" aria-labelledby="dropdownMenu">
+                            <li class="chexin"><a href="javascript:;" name="class_type">科目二教练</a></li>
+                            <li class="chexin"><a href="javascript:;" name="class_type">科目三教练</a></li>
+                        </ul>
+                        <b class="xian"></b>
+                    </div>
+                    <div class="dropdown">
+                        <a id="banxing" role="button" data-toggle="dropdown" class="btn" data-target="#"
+                           href="javascript:;">
+                            班型<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu multi-level nav_menu2" role="menu" aria-labelledby="dropdownMenu">
+                                    <li class="banji"><a href="javascript:;" name="class">VIP班</a></li>
+                                    <li class="banji"><a href="javascript:;" name="class">贵宾班</a></li>
+                                    <!--<li class="banji"><a href="javascript:;" name="class_type">标准班</a></li>-->
+                                    <li class="divider"></li>
+                        </ul>
+                        <b class="xian"></b>
+                    </div>
+                    <div class="dropdown">
+                        <a id="paixu" role="button" data-toggle="dropdown" class="btn" data-target="#"
+                           href="javascript:;">
+                           综合排序<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu multi-level nav_menu3" role="menu" aria-labelledby="dropdownMenu">
+                            <li class="paixu"><a href="javascript:;" name="zonghe">综合排序</a></li>
+                            <li class="paixu"><a href="javascript:;" name="praise">好评率</a></li>
+                            <li class="paixu"><a href="javascript:;" name="pass">通过率</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section style="padding-bottom: 100rem;">
+                <div class="contain clearfix">
+                    <div class="teacher-list">
+                    <volist name="data" id="vo">
+                    <a href="{:U('Home/coach/detail')}?pid={$vo.pid}" class="clearfix">
+                        <div class="section-menu clearfix">
+                            <div class="pull-left clearfix">
+                                <img src="__PUBLIC__/App/Index/coach/{$vo.coafile}" class="img-responsive" alt="Responsive image">
+                            </div>
+                            <div class="pull-right clearfix">
+                                <h4>
+                                    <span>教练员:</span>
+                                    <span class="section_name">{$vo.cname}</span>
+                                    <span class="jingxuan">精选</span>
+                                </h4>
+         <p class="section_location">{$vo.school}<span>车型:<em>{$vo.car}</em></span><span>班型:<em>{$vo.class}</em></span></p>
+         <p class="section_price"><span>信用: <img src="__PUBLIC__/Weixin/img/xin_{$vo.credit}.gif"></span><span>好评率:100%</span><span>通过率:100%</span> </p>
+         <p class="section_zonghe clearfix"><span>综合:<img src="__PUBLIC__/Weixin/img/star{$vo.zonghe}.png"> &nbsp;{$vo.zonghe}.0</span><span>当前学员数:{$vo.num}人</span> </p>
+                            </div>
+                        </div>
+                    </a>
+                    </volist>
+                    </div>
+            <div class="footer_more">
+                <button class="btn">
+                    <div id="ajaxmore" style="text-align: center;">
+                        <a href="javascript:;" class="more" id="getMore" num="1" school="{$pid.school}" data-action="{:U('Home/Coach/getmore')}">加载更多</a>
+                    </div>
+                </button>
+            </div>
+                </div>
+        </section>
+        <footer>
+            <nav class="nav navbar-fixed-bottom foot_fix">
+                <ul class="clearfix">
+                    <li class="pull-left "><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                    <li class="pull-left cur"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <div class="backtop">
+            <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+        </div>
+    </div>
+    
+    <!-- 遮罩层 -->
+    <div class="zezhao hide"></div>
+
+<script src="__PUBLIC__/Weixin/js/coach_list.js"></script>
+<script src="__PUBLIC__/Weixin/js/coach_ajax.js"></script>
+
+<script>
+        $('.banji').click(function(){
+            var html = $(this).find("a").text()
+            $('#banxing').text(html)
+        })
+        $('.paixu').click(function(){
+            var html = $(this).find("a").text()
+            $('#paixu').text(html)
+        })
+        $('.chexin').click(function(){
+            var html = $(this).find("a").text()
+            $('#chexin').text(html)
+        })
+    </script>
+<script>
+    $(".nav .list_menu .btn-menu").mouseenter(function(){
+        $(".nav .list_menu ul.category").removeClass('hide').addClass("show");
+        $(".nav-sort .main-content .screen .screenList").removeClass('show').addClass('hide');
+         $(".nav-sort .main-content .sort .sortList").removeClass('show').addClass('hide');
+        $(".zezhao").removeClass('hide').addClass('show');
+        $("body,#root").height($(window).height()).css({
+            "overflow-y": "hidden"
+        });
+    });
+    $(".zezhao").css({ "width": $(document).width(), "height": $(document).height() });
+    $(".zezhao").click(function(){
+        $(".nav .list_menu ul.category").removeClass('show').addClass("hide");
+        $(".nav-sort .main-content .sort .sortList").removeClass('show').addClass('hide');
+        $(".nav-sort .main-content .screen .screenList").removeClass('show').addClass('hide');
+        $(this).removeClass('show').addClass('hide');
+       
+});
+    $(".main-content .sort").click(function(){
+        $(".nav-sort .main-content .sort .sortList").removeClass('hide').addClass('show');
+        $(".nav-sort .main-content .screen .screenList").removeClass('show').addClass('hide');
+                $(".nav .list_menu ul.category").removeClass('show').addClass("hide");
+        $(".zezhao").removeClass('hide').addClass('show');
+        $("body,#root").height($(window).height()).css({
+            "overflow-y": "hidden"
+        });
+    })
+    $(".main-content .screen").click(function(){
+        $(".nav-sort .main-content .screen .screenList").removeClass('hide').addClass('show');
+                $(".nav-sort .main-content .sort .sortList").removeClass('show').addClass('hide');
+        $(".nav .list_menu ul.category").removeClass('show').addClass("hide");
+        $(".zezhao").removeClass('hide').addClass('show');
+        $("body,#root").height($(window).height()).css({
+            "overflow-y": "hidden"
+        });
+    })
+    $('.btn-search').click(function(){
+        if($(".searchDiv").is(':hidden')){
+            $(".searchDiv").show();
+            $(".nav-sort .main-content .screen .screenList").removeClass('show').addClass('hide');
+                $(".nav-sort .main-content .sort .sortList").removeClass('show').addClass('hide');
+                        $(".zezhao").removeClass('show').addClass('hide');
+        $(".nav .list_menu ul.category").removeClass('show').addClass("hide");
+        }else{
+            $(".searchDiv").hide();
+        }
+    })
+
+</script>
+    
+</body>
+</html>

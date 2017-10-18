@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/setting.css">
+   
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;">
+        <a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-menu-left" style="color: white;font-size:1.8rem;margin-left: 1rem;"></i></a>
+        <span style="line-height: 4.6rem;font-size:2rem;color: white;margin-left: -1rem;">修改密码</span>
+    </div>
+    <div class="seetingPassword">
+        <form action="{:U('Home/User/setpwd')}" id="settingPsd" method="post">
+            <volist name="data" id="vo">
+            <p>绑定手机：{$vo.phone}</p>
+            <input type="hidden" placeholder="请输入账号/手机号码" class="nunm" name="phone" id="phone" value="{$vo.phone}">
+            </volist>
+            <div>
+                <input type="text" name='msg' placeholder="短信验证码" class="setting_psd">
+                <span class="getYZM" name="btn" value=""  id="getMessage" onmousedown="getDate()" disabled="disabled">获取验证码</span>
+                <span class="setting_psd_input">
+                    <input type="password" name="passwda" placeholder="设置6-20位新密码" class="psd">
+                </span>
+                <span class="setting_psd_input">
+                    <input type="password" name="passwdb" placeholder="确认密码" class="psd psdAgen">
+                </span>
+            </div>
+            <div style="text-align:center;">
+                <input type="submit" value="保&nbsp;&nbsp;存" class="btn upload">
+            </div>
+            
+        </form>
+
+    </div>
+</div>
+</body>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var wait=60;
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            wait--;
+            o.innerHTML=wait+"秒后重新发送";
+            if(wait==0){
+                o.removeAttribute("disabled");
+                o.innerHTML="获取验证码";
+            }
+            setTimeout(function() {
+                        time(o)
+                    },
+                    1000)
+        }
+    }
+    document.getElementById("getMessage").onclick=function(){time(this);}
+
+    function getDate(){
+        $.ajax({
+            type:"post",
+            url:"{:U('Home/Send/sendmsg')}",
+            data:{'phone':$("#phone").val()},
+            success:function( result ){
+                if(result){
+                    alert("三分钟失效，请尽快使用")
+                }
+            }
+        })
+    }
+</script>
+</html>

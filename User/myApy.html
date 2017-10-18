@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/myApy.css">
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav">
+        <a href="{:U('Home/User/index')}">
+            <i class="glyphicon glyphicon-menu-left" style="font-size:2rem;margin-left: 1rem;"></i>
+        </a>
+        <span style="margin-left: -1rem;">我的订单</span>
+		<!--
+        <a href="javascript:history.back(-1)" class="pull-right">
+            <img src="__PUBLIC__/App/Index/img/talk.png" alt="">
+        </a>-->
+    </div>
+
+
+    <div id="main">
+        <div class="main_content success">
+            <volist name="coach" id="coach">
+                <p class="main_content_text">
+                    <input type="hidden" name="trade_status" value="{$trade_status}">
+                    订单编号：<span>{$out_trade_no}</span>
+                    <span class="pull-right state">
+                    交易成功
+                </span>
+                </p>
+                <div class="main_content_xinxi">
+                    <img src="__PUBLIC__/App/Index/coach/{$coach.coafile}" alt="">
+                    <div class="block_a_text clearfix">
+                        <p class="Tname">教练员:<em>{$coach.cname}</em></p>
+                        <p class="Loca">
+                            {$coach.school}
+                            <span>车型:
+                            <em>{$coach.car}</em>
+                        </span>
+                            <span>班型:
+                            <em>{$coach.class}</em>
+                        </span>
+                        </p>
+                        <p class="money">¥{$coach.price}</p>
+                    </div>
+                </div>
+            </volist>
+        </div>
+        <div class="main_content notSuccess">
+        </div>
+    </div>
+</div>
+</body>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script>
+    $(function() {
+        $('#img').change(function() {
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo').attr("src",this.result);
+            })
+        })
+        if($("input[name=trade_status]").val() == 1 ){
+            $(".state").empty().html("交易成功");
+        }else {
+            $(".state").empty().html("交易失败");
+        }
+    })
+</script>
+</html>

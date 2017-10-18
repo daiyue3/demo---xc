@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车</title>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/home.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/order.css">
+</head>
+<body>
+<div class="shop_wrapper" id="root" style="padding-bottom:10rem;">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #FF5000;text-align: center;">
+        <a href="{:U('Home/Index/index')}" class="pull-left"><i class="glyphicon glyphicon-menu-left" style="color: white;margin-left: 1rem;font-size:2rem;line-height: 4.6rem;"></i></a>
+        <span style="font-size: 2rem;color: white;text-align:center;line-height:4.6rem;margin-left: -3rem;">完善信息</span>
+        <!-- <div style="width:20px;height:20px;border-radius:50%;border:3px solid #fff;background-color: #FF5000;float: right;display:block;margin-top:-38px;margin-right:4%;"></div> -->
+    </div>
+    <form role="form" action="{:U('Home/Info/index')}" id="form" name="pic" method="post" enctype="multipart/form-data">
+
+        <div class="form_second">
+            <p><i>*</i> 请上传身份证正面照片：</p>
+            <div class="uploadImg1">
+                <!-- <span><em>*</em>身份证正面加姓名、身高和手机号照片(如图所示)</span> -->
+                <div class="idInput clearfix">
+                    <div class="uploadImgFile pull-left" >
+                        <img id="photo1" src="__PUBLIC__/App/Index/img/addImg.png" style="margin:30% 0 0 0;">
+                        <input type="file" id="img1" name="myfile[]" />
+                    </div>
+                    <div class=" clearfix pull-right" style='width:49%;'>
+                        <img src="__PUBLIC__/App/Index/img/zhengmian .png" alt="" style='width: 69%;' class="one">
+                    </div>
+                </div>
+            </div>
+            <p><i>*</i> 请上传身份证背面照片：</p>
+            <div class="uploadImg2">
+                <!-- <span><em>*</em>身份证反面照片(如图所示)</span> -->
+                <div class="idInput clearfix">
+                    <div class="uploadImgFile pull-left" >
+                        <img id="photo2" src="__PUBLIC__/App/Index/img/addImg.png" style="margin:30% 0 0 0;">
+                        <input type="file" id="img2" name="myfile[]" />
+                    </div>
+                    <div class=" clearfix pull-right" style='width:49%;'>
+                        <img src="__PUBLIC__/App/Index/img/fanmian.png" alt="" style='width: 69%;' class="one">
+                    </div>
+
+                </div>
+            </div>
+            <p><i>*</i> 请上传上半身照片：（要求：白色背景）</p>
+            <div class="uploadImg4">
+                <!-- <span><em>*</em>上半身照片(如图所示)</span> -->
+                <div class="idInput clearfix">
+                    <div class="uploadImgFile pull-left">
+                        <img id="photo3" src="__PUBLIC__/App/Index/img/addImg.png" style="margin:30% 0 0 0;">
+                        <input type="file" id="img3" name="myfile[]"/>
+                    </div>
+                    <div class=" clearfix pull-right" style='width:49%;'>
+                        <img src="__PUBLIC__/App/Index/img/three.png" alt="" style='width: 69%;' class="one">
+                    </div>
+
+                </div>
+            </div>
+            <p><i>*</i> 请上传五指健全照片：（要求：白色背景）</p>
+            <div class="uploadImg3">
+                <!-- <span><em>*</em>双手放腹部的上半身照片(如图所示)</span> -->
+                <div class="idInput clearfix">
+
+                    <div class=" clearfix pull-right" style='width:49%;'>
+                        <img src="__PUBLIC__/App/Index/img/four.png" alt="" style='width: 69%;' class="one">
+                    </div>
+                    <div class="uploadImgFile pull-left">
+                        <img id="photo4" src="__PUBLIC__/App/Index/img/addImg.png" style="margin:30% 0 0 0;">
+                        <input type="file" id="img4" name="myfile[]"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" name="btn" value="提交审核" style="border:0 solid #fff;background-color:#ff5000;width:100%;height:4.6rem;line-height:4.6rem;color:#fff;font-size:2rem;">提交审核</button>
+
+    </form>
+</div>
+
+
+
+<script>
+    $(function() {
+        //var $wid = $(".one").width();
+        //var $hei = $('.one').height();
+        //$('.uploadImgFile').height($hei);
+        function clip1(){
+            return $('#img1').click();
+        }
+        $('.uploadImgFile').click(function(){
+            clip1();
+        })
+        $('#img1').change(function(){
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo1').attr("src",this.result).css({
+                    'margin-top':'0',
+					'width':'100%',
+					'height':'100%'
+					
+                });
+            })
+        })
+
+        function clip2(){
+            return $('#img2').click();
+        }
+        $('.uploadImgFile').click(function(){
+            clip2();
+        })
+        $('#img2').change(function(){
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo2').attr("src",this.result).css({
+                    'margin-top':'0',
+                   'width':'100%',
+					'height':'100%'
+                });
+            })
+        })
+
+
+        function clip3(){
+            return $('#img3').click();
+        }
+        $('.uploadImgFile').click(function(){
+            clip3();
+        })
+        $('#img3').change(function(){
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo3').attr("src",this.result).css({
+                    'margin-top':'0',
+                    'width':'100%',
+					'height':'100%'
+                });
+            })
+        })
+
+        function clip4(){
+            return $('#img4').click();
+        }
+        $('.uploadImgFile').click(function(){
+            clip4();
+        })
+        $('#img4').change(function(){
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo4').attr("src",this.result).css({
+                    'margin-top':'0',
+                    'width':'100%',
+					'height':'100%'
+                });
+            })
+        })
+
+    })
+</script>
+
+
+<footer>
+    <nav class="nav navbar-fixed-bottom foot_fix">
+        <ul class="clearfix">
+            <li class="pull-left cur"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+            <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+            <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+            <li class="pull-left"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+        </ul>
+    </nav>
+</footer>
+</body>
+</html>

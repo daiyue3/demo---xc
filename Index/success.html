@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="3;url=http://www.baixinxueche.com/index.php/Home/User/index.html">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/payafter.css">
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav">
+        <span>提交状态</span>
+    </div>
+    <main>
+
+        <img src="__PUBLIC__/App/Index/img/gou.png">
+
+        <div class="main_text">
+
+            <p>恭喜您！信息提交成功！</p>
+        </div>
+        <p style="margin-top: 1rem;" id="time"><i>5</i>秒后自动跳转到个人中心......</p>
+
+
+
+    </main>
+</div>
+</body>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script>
+
+    var timer = 5;
+    function send(){
+        if(timer == 0){
+            timer = 0;
+            $("#time i").html(timer);
+        }else{
+            timer--;
+            $('#time i').html( timer );
+            setTimeout("send()",1000);
+        }
+    }
+    $(function(){
+
+        send();
+    });
+</script>
+
+</html>

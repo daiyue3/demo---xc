@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>百信学车</title>
+
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+    <style>
+		body{background-color: #fff;}
+    </style>
+    <script>
+        if (browser.versions.mobile) {//判断是否是移动设备打开。browser代码在下面
+        var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+        alert('请电击右上角在浏览器中打开');//在微信中打开
+        }
+        if (ua.match(/WeiBo/i) == "weibo") {
+        //在新浪微博客户端打开
+        }
+        if (ua.match(/QQ/i) == "qq") {
+        //在QQ空间打开
+        }
+        if (browser.versions.ios) {
+        //是否在IOS浏览器打开
+        }
+        if(browser.versions.android){
+        //是否在安卓浏览器打开
+        }
+        } else {
+        //否则就是PC浏览器打开
+        }
+    </script>
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;text-align: center;">
+        <a href="{:U('Home/Index/index')}" class="pull-left"><i class="glyphicon glyphicon-menu-left" style="color: white;margin-left: 1rem;font-size:2rem;position: relative;top:4px;"></i></a>
+        <span style="line-height: 4.6rem;font-size: 1.6rem;color: white;font-size:2rem;margin-left: -3rem;">下载页面 </span>
+    </div>
+</div>
+
+    <main style="width:100%;height: 100%">
+		
+        <a href="http://www.baixinxueche.com/download/bxxc.apk" >
+            <img src="__PUBLIC__/App/Index/img/android_open.png" alt="" style="width:100%;">      
+          </a>
+    </main>
+    
+
+
+</body>
+</html>
+

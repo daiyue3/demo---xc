@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百信快讯</title>
+     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <script src="__PUBLIC__/App/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/App/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/App/css/bootstrap.min.css" />
+    <style>
+    
+
+        #top{
+            margin: 0 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+        }
+        #top img{
+            width: 12rem;
+        }
+        #top .logo1{
+            float: left;
+            margin-right: 3rem;
+        }
+        #top .logo2{
+            float: left;
+        }
+        #main{
+            padding: 0 1rem 1rem;
+        }
+        h3{
+            color: #000;
+            /*font-family: "微软雅黑";*/
+            line-height: 3.4rem;
+        }
+        .pic1{
+            margin:4rem 0 1rem 0;
+        }
+        .pic1 img{
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .pic1 p{
+            margin:2rem 0;
+            font-size: 1.8rem;
+            text-indent:4rem;
+            line-height:3rem;
+        }
+        .txt{
+            margin:2rem 0;
+            font-size: 1.8rem;
+            text-indent:4rem;
+            line-height: 2rem;
+        }
+        #footer{
+            padding: 1rem 0;
+            margin: 0 1rem;
+            border-top: 1px solid #ddd;
+        }
+        .weixinma {
+            float: left;
+        }
+        .weixinma img{
+            width: 8rem;
+        }
+        .msg p{
+            margin-bottom: 0px;
+            
+        }
+        h4{
+            margin-top: .4rem;
+            margin-bottom: .1rem;
+            font-size: 1.4rem;
+        }
+    </style>
+
+    
+</head>
+<body>
+    <div id="wx_pic" style="margin:0 auto;display:none;">
+        <img src="__PUBLIC__/App/img/300300.png" />
+    </div>
+        <div id="top">
+        <div class="logo1">
+            <img src="__PUBLIC__/App/img/logo1.png" alt="">
+        </div>
+        <!-- <div class="logo2">
+            <img src="__PUBLIC__/App/img/logo2.png" alt="">
+        </div> -->
+    </div>
+    <div id="main">
+    <volist name="data" id="vo">
+        <div class="main_header">
+            <h3>{$vo.title}</h3>
+            <p style="color:#999"><span style="margin:0 1rem 0 1rem;">{$vo.subtitle}</span><br><br><em style="float:right">{$vo.time}</em></p>
+        </div>
+
+        <!-- 文字图片组合，直接改复制即可 -->
+        <div class="pic1">
+            <p class="txt">{$vo.content}</p>
+        </div>
+
+        </volist>
+
+    </div>
+    <div id="footer">
+        <div class="weixinma">
+            <img src="__PUBLIC__/App/img/weixin.jpg" alt="">
+        </div>
+        <div class="msg">
+            <h4>合肥九鬼网络科技有限公司研发并拥有版权</h4>
+            <p>总部地址：合肥市经开区莲花电子产业园A座307</p>
+            <p>联系电话：0551-65555744</p>
+            <p>官方网址：www.baixinxueche.com</p>
+        </div>
+    </div>
+    
+</body>
+</html>

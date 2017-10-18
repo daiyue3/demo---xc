@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title></title>
+    <link rel="stylesheet" href="__PUBLIC__/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/keyword.css">
+</head>
+<body>
+
+    <div class="shop_wrapper">
+        <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;">
+            <a href="javascript:history.go(-1)"><i class="glyphicon glyphicon-chevron-left" style="color: white;"></i></a>
+            <span style="line-height: 4.6rem;font-size: 1.6rem;color: white;">忘记密码</span>
+        </div>
+        <main>
+            <script>
+                //获取验证码的ajax请求
+                var wait = 60;
+                function time() {
+                    var btn = document.getElementById('getCode');
+                    var phone = document.getElementById('phone').value;
+
+                    if(wait == 0){
+                        btn.removeAttribute("disabled");
+                        btn.innerHTML = "获取验证码";
+                        wait = 60;
+                        return;
+                    } else {
+                        btn.setAttribute("disabled", true);
+                        wait--;
+                        btn.innerHTML = "剩余"+wait + "秒";
+                    }
+                    setTimeout(function () {
+                            time()
+                        }, 1000)
+                }
+                function get() {
+
+                    var phone = document.getElementById('phone').value;
+                    if(!(/^1[3|4|5|6|7|8|9][0-9]\d{4,8}$/.test(phone))){
+                        alert("请填写正确的手机号码");
+                        return false;
+                    }
+                    time();
+                    phone = "phone=" + phone;
+                    var xml = new  XMLHttpRequest();
+                    var url = "{:U('Home/Login/passwd')}";
+                    xml.onreadystatechange = function () {
+                        if(xml.readyState == 4){
+                            if((xml.status >= 200 && xml.status < 300) || xml.status == 304){
+
+                                if(xml.responseText == 1){
+                                    alert("验证码已发送，请注意查收!");
+                                }else if(xml.responseText == -1){
+                                    alert("账号不存在!");
+                                }else if (xml.responseText == -2){
+                                    alert("验证短信发送失败!请检查网络!");
+                                }
+                            }else {
+                                alert("网络异常，请稍后!");
+                            }
+                        }
+
+                    };
+                    xml.open('POST', url, true);
+                    xml.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                    xml.send(phone);
+
+                }
+
+            </script>
+            <div class="event">
+                <form class="acction_r" action="{:U('Home/Login/passwda')}" method="post" onsubmit="return  check()">
+                    <div class="message_m clearfix">
+                        <span class="text_w">手机号:</span>
+                        <input type="text" placeholder="请输入手机号码" class="num" name="phone" id="phone">
+                    </div>
+                    <div class="message_m clearfix">
+                        <span class="text_w">验证码:</span>
+                        <input type="text" placeholder="请输入验证码" class="verification" name="yanzhengma" id="verification">
+                        <button type="button" class="gett" id="getCode" onclick="get()">获取验证码</button>
+                    </div>
+
+                    <div class="message_m clearfix">
+                        <span class="text_w">新密码:</span>
+                        <input type="password" name="password" value="" placeholder="请输入新密码" id="psd">
+
+                    </div>
+                    <div class="message_m clearfix">
+                        <span class="text_w" style="margin-left: 2.8rem;">确认密码:</span>
+                        <input type="password" class="regis_p" placeholder="请再次输入密码" name="passwd" id="opsd">
+                    </div>
+
+                    <div>
+                        <input type="submit" class="regis_t" value="提交">
+                    </div>
+
+                </form>
+
+            </div>
+            <p class="Word">科技改变生活  百信引领学车</p>
+        </main>
+    </div>
+    <script>
+        function check() {
+            var phone = document.getElementById("phone").value;
+            var code  = document.getElementById("verification").value;
+            var psd  = document.getElementById("psd").value;
+            var opsd  = document.getElementById("opsd").value;
+            if (!(/^1[3|4|5|6|7|8|9][0-9]\d{4,8}$/.test(phone))) {
+                alert('请填写正确的手机号码');
+                return false;
+            }
+            if (!(/^\d{6}$/.test(code))) {
+                alert("请输入正确的验证码");
+                return false;
+            }
+            if(!(/^(\w){6,20}$/).test(psd)){
+                alert("密码格式为 6-20个字母、数字、下划线");
+                return false;
+            }
+            if(psd != opsd){
+                alert("两次密码不一致。请重新填写！");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+</body>
+
+</html>

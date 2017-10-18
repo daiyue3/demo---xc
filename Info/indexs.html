@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/index.css">
+    <title>分享</title>
+</head>
+<body>
+    <div class="fenxiang">
+        <div class="list">
+            <ul>
+                <li class="pic">
+                    <img src="__PUBLIC__/Uploads/coach/{$coafile}" alt="" style="border-radius: 50%">
+                </li>
+                <li class="content">
+                    教练:<span>{$cname}</span>
+                </li>
+                <li class="content">
+                    好评率:<span>{$praise}%</span>
+                </li>
+                <li class="content" id="content">
+                    综合评价: 
+                        <img src="__PUBLIC__/App/Index/img/star5.0.png" >
+                    <span>{$zonghe}分</span>
+                </li><input type="hidden" value="{$zonghe}" id="zonghe">
+                <li class="wx">
+                    <img src="__PUBLIC__/App/Index/img/fxpic.png" alt="">
+                </li>
+                <li>
+                    扫描或长按二维码给你惊喜哦！
+                </li>
+            <script>
+            var zh = document.getElementById('zonghe').value;
+            // console.log(zh)
+                if(zh<5 && zh>4){
+                zh = 4.5;
+                var insertText = '综合评价:<img src="__PUBLIC__/App/Index/img/star'+zh+'.png" ><span>{$zonghe}分</span>';
+                document.getElementById('content').innerHTML=insertText;
+                }
+                if(zh<4 && zh>3){
+                zh = 3.5;
+                var insertText = '综合评价:<img src="__PUBLIC__/App/Index/img/star'+zh+'.png" ><span>{$zonghe}分</span>';
+                document.getElementById('content').innerHTML=insertText;
+                }
+                if(zh<3 && zh>2){
+                zh = 2.5;
+                var insertText = '综合评价:<img src="__PUBLIC__/App/Index/img/star'+zh+'.png" ><span>{$zonghe}分</span>';
+                document.getElementById('content').innerHTML=insertText;
+                }
+                if(zh<2 && zh>1){
+                zh = 1.5;
+                var insertText = '综合评价:<img src="__PUBLIC__/App/Index/img/star'+zh+'.png" ><span>{$zonghe}分</span>';
+                document.getElementById('content').innerHTML=insertText;
+                }
+
+            
+            </script>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

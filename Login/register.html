@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>注册</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/register1.css">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="shop_wrapper" id="root">
+    <nav class="nav navbar-fixed-top list_nav clearfix">
+        <p>注册</p>
+    </nav>
+    <main>
+        <div class="event">
+            <form class="acction_l" action="" method="post" id="register-form">
+                <div class="messs">
+                    <div class="message_m">
+                        <input type="text" placeholder="请输入账号/手机号码" class="nunm" name="phone" id="phone">
+                    </div>
+                    <div class="message_m">
+                        <input type="text" placeholder="请输入验证码" class="numb pull-left" name="msg" id="yzm">
+                        <span class="yanzheng"name="btn" value=""  id="getMessage" onmousedown="getDate()" disabled="disabled">获取验证码</span>
+                    </div>
+                    <div class="message_m clearfix">
+                        <input type="password" placeholder="请输入密码" class="num pull-left mima1" name="passwd">
+                    </div>
+                    <div class="message_m clearfix">
+                        <input type="password" placeholder="请再次输入密码" class="num pull-left mima2" name="passwda">
+                    </div>
+                </div>
+                <div class="message_m">
+                    <input type="submit" class="regis_t" value="立即注册">
+                </div>
+                <!--<div class="message_m">-->
+                <!--<a class="counnt" href="register1.html"><img src="__PUBLIC__/Wap/img/wei.png">微信一键登录</a>-->
+                <!--</div>-->
+            </form>
+            <div class="forte clearfix">
+                <span class="number">已有账号？点此<a href="{:U('Home/Login/login')}">立即登录</a></span>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <nav class="nav navbar-fixed-bottom foot_fix">
+            <ul class="clearfix">
+                <li class="pull-left"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                <li class="pull-left"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我</a></li>
+            </ul>
+        </nav>
+    </footer>
+    <div class="backtop">
+        <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+    </div>
+</div>
+<script>
+    $('.regis_t').click(function () {
+        if ($("#phone[type=text]").val()==""){
+            alert('账号不允许为空！');
+            return false;
+        }
+        if ($('#yzm[type=text]').val()==''){
+            alert('验证码不允许为空！');
+            return false;
+        }
+        if($('.mima1[type=password]').val()==''){
+            alert('密码不允许为空！');
+            return false;
+        }else if($('.mima2[type=password]').val()==''){
+            alert('再次输入密码不允许为空！');
+            return false;
+        }
+        if($('.mima1[type=password]').val() == $('.mima2[type=password]').val() ){
+            $('#register-form').attr("action","{:U('Home/Login/info')}").submit();
+        }else{
+            alert('两次输入密码不一致！');
+            return false;
+        }
+    });
+</script>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var wait=60;
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            wait--;
+            o.innerHTML=wait+"秒后重新发送";
+            if(wait==0){
+                o.removeAttribute("disabled");
+                o.innerHTML="获取验证码";
+            }
+            setTimeout(function() {
+                        time(o)
+                    },
+                    1000)
+        }
+    }
+    document.getElementById("getMessage").onclick=function(){time(this);}
+
+    function getDate(){
+        $.ajax({
+            type:"post",
+            url:"{:U('Home/Send/sendmsg')}",
+            data:{'phone':$("#phone").val()},
+            success:function( result ){
+                if(result){
+                    alert("三分钟失效，请尽快使用")
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

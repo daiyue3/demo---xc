@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link href="__PUBLIC__/App/Index/css/forth_enter.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/login.css">
+    <style>
+        .event{
+            margin-top: 7.6rem;
+        }
+        .from_select{
+            font-size: 1.6rem;
+            color: #999;
+            margin-top: 1rem;
+            background-color: #fff;
+            padding: 1rem;
+            border: 1px solid #aaa;
+        }
+        .from_select input{
+            outline: none;
+            margin-left: 2rem;
+            margin-right: 1rem;
+        }
+        .upDateImg{
+            position: relative;
+            text-align: center;
+        }
+        .upDateImg p{
+            margin: 1rem 0;
+            color: #aaa;
+        }
+        .upDateImg img{
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            margin: 4rem auto 0;
+        }
+        .upDateImg input{
+            opacity: 0;
+            z-index: 0;
+        }
+        .upDateImg #img{
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            width: 50%;
+            height: 80%;
+        }
+        .event .acction_l .btn{
+            width: 100%;
+            height: 4.6rem;
+            color: #fff;
+            background-color: #e4393c;
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="shop_wrapper" id="root">
+    <nav class="nav navbar-fixed-top list_nav clearfix">
+     <p>个人信息</p>
+    </nav>
+    <main>
+     <div class="event">
+         <form class="acction_l" action="{:U('Home/Login/infomation')}" method="post" enctype="multipart/form-data">
+             <div class="upDateImg">
+                <img src="__PUBLIC__/App/Index/img/pict.png" id="photo">
+                <p>点击设置头像</p>
+                <input type="file" id="img" name="file">
+             </div>
+             <div class="messs">
+                 <div class="message_m">
+                     <input type="text" placeholder="请输入真实姓名" class="nunm" name="name">
+                 </div>
+             </div>
+             <div class="from_select">
+                <span>性别:</span>
+                 <input type="radio" value="男" name="sex">男
+                 <input type="radio" value="女" name="sex">女
+             </div>
+             <textarea name="introduce" style="display: none">XXXXXX</textarea>
+             <input type="submit" class="btn" value="提&nbsp;交">
+         </form>
+            
+     </div>
+    
+    </main>
+    <footer>
+            <nav class="nav navbar-fixed-bottom foot_fix">
+                <ul class="clearfix">
+                    <li class="pull-left"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="javascript:;">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                    <li class="pull-left"><a href="{:U('Hpme/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+                </ul>
+            </nav>
+        </footer>
+    <div class="backtop">
+        <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+    </div>
+</div>
+
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script>
+    $(function() {
+        $('#img').change(function() {
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo').attr("src",this.result);
+            })
+        })
+    })
+</script>
+</body>
+</html>

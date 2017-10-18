@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>百信学车</title>
+        <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+        
+</head>
+
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;text-align:center;">
+        <a href="javascript:history.back(-1)" class="pull-left"><i class="glyphicon glyphicon-menu-left" style="color: white;font-size:2rem;margin-left: 1rem;line-height: 4.6rem;"></i></a>
+        <span style="line-height: 4.6rem;font-size: 2rem;color: white;margin-left: -3rem;">消息中心</span>
+    </div>
+</div>
+
+
+    <img src="__PUBLIC__/App/Index/img/nomsg.png" style="width:100%;height: 100%;margin:0 auto;" >
+
+
+       <footer>
+        <nav class="nav navbar-fixed-bottom foot_fix">
+            <ul class="clearfix">
+                    <li class="pull-left "><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                    <li class="pull-left cur"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+                </ul>
+        </nav>
+    </footer>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

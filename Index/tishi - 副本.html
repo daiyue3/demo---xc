@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>暂无活动</title>
+<!-- Meta Tags -->
+<meta name="viewport" content="width= device-width, initial-scale= 1">
+<!-- Modernizr -->
+<script src="__PUBLIC__/Home/js/modernizr.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Home/js/notifyme.js"></script>
+<style>	
+.notify{position:fixed;padding:20px;color:#fff}
+.notify[data-position="bottom"]{right:0;left:0;bottom:0}
+.notify[data-position="top"]{right:0;left:0;top:0}
+.notify[data-position="right"]{right:0;bottom:0;top:0;max-width:300px}
+.notify[data-position="left"]{left:0;top:0;bottom:0;max-width:300px}
+.notify[data-notify='success']{background:#15cc1f}
+.notify[data-notify='info']{background:#FF5000}
+.notify[data-notify='error']{background:#f32750}
+.notify[data-notify='default']{background:#cf80ad}
+.notify .notify-close{cursor:pointer;position:absolute;right:0;top:0;color:#fff;padding:10px 15px;font-size:20px;text-decoration:none}
+.notify h1{margin:5px 0 10px 0;text-transform:uppercase;font-weight:300;color:#fff}
+h1,h2,h3,h4 {
+	cursor:default;
+	font-weight:400
+}
+p {
+	color:#707070;
+}
+a {
+	color:#2d9cee;
+	text-decoration:none
+}
+pre {
+	padding:10px;
+	color:#909090;
+	background:#fff;
+	overflow:auto;
+	border-bottom:3px solid #ddedea
+}
+.feature {
+	color:#cf80ad;
+	font-weight:400
+}
+* {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box
+}
+body {
+	background:#e9faf7;
+	color:#555;
+	height:100%;
+	line-height:10px;
+	margin:0;
+	padding:0;
+	position:relative;
+	font-size:13px;
+	font-family:"Open Sans",helvetica,arial,tahoma;
+	font-weight:400
+}
+.container {
+	padding:10px;
+	max-width:800px;
+	margin:0 auto
+}
+.topbar {
+	padding:0;
+	background:#fff;
+	border-bottom:3px solid #ddedea;
+	text-align:center
+}
+.topbar>.container {
+	padding:0;
+	margin:0 auto
+}
+.topbar .top-items {
+	padding:10px 20px;
+	color:#cf80ad;
+	display:inline-block;
+	position:relative;
+	text-align:center;
+	z-index:30;
+	-webkit-transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+	transition:all 0.3s ease
+}
+.topbar .top-items .fa {
+	font-size:15px
+}
+.topbar .top-items:after {
+	content:'';
+	background:#cf80ad;
+	width:100%;
+	position:absolute;
+	bottom:0;
+	left:0;
+	height:0;
+	z-index:-1;
+	color:#fff;
+	-webkit-transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+	transition:all 0.3s ease
+}
+.topbar .top-items:hover {
+	color:#fff
+}
+.topbar .top-items:hover:after {
+	height:100%
+}
+header {
+	text-align:center
+}
+header .logo {
+	cursor:default;
+	margin:20px auto;
+	display:block;
+	font-family:'Pacifico', cursive;
+	font-size:75px;
+	color:#cf80ad;
+	text-shadow:3px 5px 0 #dfe3e8;
+	-webkit-transition:all 0.4s ease;
+	-moz-transition:all 0.4s ease;
+	-o-transition:all 0.4s ease;
+	transition:all 0.4s ease
+}
+header .logo:hover {
+	color:#c86da1;
+	text-shadow:4px 8px 0 #dfe3e8
+}
+.btn-group {
+	margin:30px 0
+}
+.btn {
+	cursor:pointer;
+	background:#fff;
+	color:#fff;
+	text-decoration:none;
+	padding:15px 0px;
+	display:inline-block;
+	text-align:center;
+	text-transform:uppercase;
+	margin-right:3%;
+	width:22%;
+	-webkit-box-shadow:0 3px 0 rgba(0,0,0,0.1);
+	-moz-box-shadow:0 3px 0 rgba(0,0,0,0.1);
+	-o-box-shadow:0 3px 0 rgba(0,0,0,0.1);
+	box-shadow:0 3px 0 rgba(0,0,0,0.1);
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	-o-border-radius:3px;
+	border-radius:3px
+}
+.btn.error {
+	background:#f32750
+}
+.btn.info {
+	background:#2d9cee
+}
+.btn.success {
+	background:#15cc1f
+}
+.btn.default {
+	background:#cf80ad
+}
+.btn:last-child {
+	margin-right:0
+}
+footer {
+	background:#fff;
+	padding:15px 0;
+	margin-top:30px;
+	text-align:center;
+	color:#909090;
+	font-weight:300;
+	clear:both
+}
+footer span,footer .fa-heart {
+	color:#cf80ad;
+	font-weight:400;
+	-webkit-transition:all 0.3s ease;
+	-moz-transition:all 0.3s ease;
+	-o-transition:all 0.3s ease;
+	transition:all 0.3s ease
+}
+footer .fa-heart:hover {
+	font-size:20px
+}
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- <div class="btn-group">
+			<a class="btn default"><i class="fa fa-coffee"></i> Default</a>
+			<a class="btn error"><i class="fa fa-warning"></i> Error</a>
+			<a class="btn info"><i class="fa fa-info"></i> Info</a>
+			<a class="btn success"><i class="fa fa-check"></i> Success</a>
+		</div> -->
+		
+	</div>
+
+
+
+	<!-- SCRIPTS -->
+
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		/*$('.error').on('click', function(){
+			$(this).notifyMe(
+				'bottom',
+				'error',
+				'Lorem Ipsum Text',
+				'Lorem ipsum dolos lorem uisnsnd h jsakdh ajkdbh',
+				200
+			);
+		});*/
+
+		// $('.info').on('click', function(){
+			$('.info').notifyMe(
+				'top',
+				'info',
+				'暂无活动',
+				'<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非常抱歉，给你带来不便~',
+				300
+			);
+		// });
+
+		/*$('.success').on('click', function(){
+			$(this).notifyMe(
+				'left',
+				'success',
+				'Lorem Ipsum Text',
+				'Lorem ipsum dolos lorem uisnsnd h jsakdh ajkdbh',
+				400
+			);
+		});*/
+
+		/*$('.default').on('click', function(){
+			$(this).notifyMe(
+				'right',
+				'default',
+				'Lorem Ipsum Text',
+				'Lorem ipsum dolos lorem uisnsnd h jsakdh ajkdbh',
+				500
+			);
+		});*/
+	});
+	</script>
+<!-- 代码 结束 -->
+
+</body>
+</html>

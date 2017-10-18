@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车-用户登录</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link href="__PUBLIC__/App/Index/css/forth_enter.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/login.css">
+</head>
+<body>
+<div class="shop_wrapper" id="root">
+    <nav class="nav navbar-fixed-top list_nav clearfix">
+     <p>登录</p>
+    </nav>
+    <main>
+     <div class="event">
+         <form class="acction_l" action="{:U('Home/Login/loginuser')}" method="post">
+             <div class="messs">
+                 <div class="message_m">
+                     <input type="text" placeholder="请输入账号/手机号码" class="nunm" name="phone">
+                 </div>
+                 <div class="message_m clearfix">
+                     <input type="password" placeholder="请输入登录密码" class="num pull-left" name="passwd">
+                 </div>
+                 <!--<div class="message_m">-->
+                     <!--<input type="text" placeholder="请输入验证码" class="numb pull-left">-->
+                     <!--<span class="yanzheng">获取验证码</span>-->
+                 <!--</div>-->
+             </div>
+             <div class="message_m">
+                 <input type="submit" class="regis_t" value="立即登录">
+             </div>
+             <!--<div class="message_m">-->
+                 <!--<a class="counnt" href="register1.html"><img src="img/wei.png" style="margin-right: 1rem;">微信一键登录</a>-->
+             <!--</div>-->
+         </form>
+            <div class="forte clearfix">
+                <span class="word"><a href="{:U('Home/Login/forget')}">忘记密码</a></span>
+                <span class="number">还没有账号？点此<a href="{:U('Home/Login/register')}">立即注册</a></span>
+            </div>
+     </div>
+    
+    </main>
+    <footer>
+        <nav class="nav navbar-fixed-bottom foot_fix">
+            <ul class="clearfix">
+                <li class="pull-left"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                <li class="pull-left"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我</a></li>
+            </ul>
+        </nav>
+    </footer>
+    <div class="backtop">
+        <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+    </div>
+</div>
+
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+
+</body>
+</html>

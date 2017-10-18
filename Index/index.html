@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车</title>
+    <style>
+        html{
+            font-size: 50px;
+        }
+    </style>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/home.css">
+    <script type="text/javascript" src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="shop_wrapper" id="root">
+        <nav class="nav navbar-fixed-top list_nav clearfix">
+            <div class="logo">
+                合肥
+                <i class="glyphicon glyphicon-triangle-bottom"></i>
+                 <span>
+                    百信学车
+                </span>
+            </div>
+            <div class="list_menu pull-right text-center"  style="height: 244px;">
+                <button class="btn-menu"><i class="glyphicon glyphicon-th-list"></i></button>
+                <div class="menu_cover">
+                    <p>点击此处返回</p>
+                </div>
+                <ul class="category hide">
+                    <!-- <li><a href="home.html">首页</a></li> -->
+                    <li><a href="{:U('Home/Coach/coaches')}">教练中心</a></li>
+                    <li><a href="{:U('Home/Index/place')}">场地中心</a></li>
+                    <li><a href="{:U('Home/Index/download')}">APP下载</a></li>
+                    <li><a href="{:U('Home/Login/login')}">登录/注册</a></li>
+                </ul>
+            </div>
+        </nav>
+            <header style="margin-top: 4.6rem;">
+                <div id="lb" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#lb" class="active" data-slide-to="0"></li>
+                        <li data-target="#lb" data-slide-to="1"></li>
+                        
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active"><a href="#"><img src="__PUBLIC__/App/Index/img/lbo1.png" /></a></div>
+                        <div class="item"><a href="#"><img src="__PUBLIC__/App/Index/img/lbo2.png" /></a></div>
+                        
+                    </div>
+                </div>
+            </header>
+        <main class="home_m">
+            <!-- <div class="pro_title clearfix">
+                <h2 class="pull-left">推荐场地、教练</h2>
+                <a class="pull-right" href="place.html">更多</a>
+            </div> -->
+            <div class="teac">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <a href="{:U('Home/Index/place')}">
+                                    <img src="__PUBLIC__/App/Index/img/map.png" style="width: 40px;">
+                                    <p class="teac_tt">场地中心</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <a href="{:U('Home/Coach/coaches')}">
+                                    <img src="__PUBLIC__/App/Index/img/pic2.png" style="width: 40px;">
+                                    <p class="teac_tt">教练中心</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <a href="http://www.baixinxueche.com/index.php/Home/Index/baoming.html"><!--{:U('Home/Coach/coaches')}-->
+                                    <img src="__PUBLIC__/App/Index/img/pic3.png" style="width: 40px;">
+                                    <p class="teac_tt">报名学车</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-3">
+                            <ul>
+                                <li>
+                                    <a href="{:U('Home/Index/download')}">
+                                    <img src="__PUBLIC__/App/Index/img/pic4.png" style="width: 40px;" >
+                                    <p class="teac_tt">下载APP</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="actt">
+                <!-- <p class="acct_t" style="color: #e97756;font-weight: bold; font-size: 1.6rem; padding-left: 1rem">精彩活动</p> -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="actt_a clearfix">
+                                <a href="{:U('Home/Index/aboutus')}"><img src="__PUBLIC__/App/Index/img/flow.png" style="width: 40px;"></a>
+                                <div class="actt_b pull-right">
+                                    <h5>学车流程</h5>
+                                    <p>科技改变生活</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="actt_a clearfix">
+                                <a href="{:U('Home/Index/advantage')}"><img src="__PUBLIC__/App/Index/img/service.png" style="width: 40px;"></a>
+                                <div class="actt_b pull-right">
+                                    <h5>服务承诺</h5>
+                                    <p>预约随到随学</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="actt_a clearfix">
+                                <a href="{:U('Home/Index/map')}"><img src="__PUBLIC__/App/Index/img/problem.png" style="width: 40px;"></a>
+                                <div class="actt_b pull-right">
+                                    <h5>常见问题</h5>
+                                    <p >定时定点接送服务</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="actt_a clearfix">
+                                <a href="{:U('Home/Index/stu')}"><img src="__PUBLIC__/App/Index/img/about1.png" style="width: 40px;"></a>
+                                <div class="actt_b pull-right">
+                                    <h5>关于百信</h5>
+                                    <p>资深教练入驻平</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pro_body">
+                <ul class="clearfix">
+                    <volist name="data" id="vo">
+                    <li class="pull-left">
+                       <div class="pro_info">
+                           <div class="proimg">
+                               <a href="{:U('Home/Coach/detail')}?pid={$vo.pid}"><img src="__PUBLIC__/App/Index/coach/{$vo.coafile}" /></a>
+                           </div>
+                           <div class="proname">
+                               <a href="{:U('Home/Coach/detail')}?pid={$vo.pid}">姓名:{$vo.cname}&nbsp; 班型:{$vo.class}</a>
+                           </div>
+                           <div class="proprice "><span>综合:</span>
+                               <img src="__PUBLIC__/App/Index/img/star{$vo.zonghe}.png">
+                           </div>
+                           <div class="proprice">
+                               <span>信用：</span>
+                               <img src="__PUBLIC__/App/Index/img/xin_{$vo.credit}.gif" />
+                               <p style="margin-top: .6rem;"><i>好评率：</i>{$vo.praise}%<span class="" style="margin-left: .5rem;"><i>通过率：</i>{$vo.pass}%</span></p>
+                           </div>
+                       </div>
+                    </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="lookh">
+                <p class="text-center">还没有找到合适的教练，<a href="{:U('Home/Coach/coaches')}">点这里看看吧</a></p>
+            </div>
+            <div class="copyright">
+                <p class="text-center">Copyright@2016百信学车版权所有</p>
+            </div>
+        </main>
+        <footer>
+            <nav class="nav navbar-fixed-bottom foot_fix">
+                <ul class="clearfix">
+                    <li class="pull-left cur"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+                </ul>
+            </nav>
+        </footer>
+        <div class="backtop">
+            <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+        </div>
+    </div>
+    <div class="zezhao hide">
+
+    </div>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+    <script>
+
+        $(".nav .list_menu .btn-menu").mouseenter(function(){
+            $(".nav .list_menu ul.category").removeClass('hide').addClass("show");
+            $(".zezhao").removeClass('hide').addClass('show');
+            $("body,#root").height($(window).height()).css({
+                "overflow-y": "hidden"
+            });
+        });
+        $(".zezhao").css({ "width": $(document).width(), "height": $(document).height() });
+        $(".zezhao").click(function(){
+            $(".nav .list_menu ul.category").removeClass('show').addClass("hide");
+            $(this).removeClass('show').addClass('hide');
+            $("body,#root").height($(window).height()).css({
+                "overflow-y": "auto"
+            });
+        });
+
+    </script>
+
+</body>
+</html>

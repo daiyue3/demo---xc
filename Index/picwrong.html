@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+<title>照片审核失败原因</title>
+<link type="text/css" href="__PUBLIC__/App/Index/css/tishihuodong.css" rel="stylesheet" />
+    <script src="__PUBLIC__/Home/js/layer_mobile/layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/App/Index/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/App/Index/js/scroll.js"></script>
+
+<style>
+    .list_lh {
+    /* height: 600px; */
+    overflow: hidden;
+}
+
+</style>
+
+</head>
+
+<body>
+<div class="box">
+	<div class="bcon">
+<!--         <h1 align="center">
+            <b>照片审核失败原因</b>
+             <div style="float: right;">
+    
+    <button class="btn">
+        <img src="__PUBLIC__/App/Index/img/serch.png" alt="" width="30"/>
+    </button>
+</div>
+        </h1> -->
+		<!-- 代码开始 -->
+		<div>
+			<ul>
+			<volist name="picwrong" id="vo"  key="k">
+				<li>
+                    <span style="font-size: 16px; height: 30px;">{$k}、{$vo.thing}</span>
+				</li>
+			</volist>
+			</ul>
+		</div>
+		<!-- 代码结束 -->
+	</div>
+
+	
+	<!--<div class="btm">
+	<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持及以下浏览器。</p>
+	<p>来源：<a href="" target="_blank">16素材网</a></p>
+	</div>-->
+	<div><p style="font-size: 16px;">　附录先前上传的照片:</p></div>
+
+
+          <style type="text/css">
+                .img{text-align:center;}
+                .img img{width:90%;}
+           </style>
+       <p class="img"><img src="__PUBLIC__/Uploads/examination/{$file.picture0}"></p>
+       </br>
+       <p class="img"><img src="__PUBLIC__/Uploads/examination/{$file.picture1}"></p>
+       </br>
+       <p class="img"><img src="__PUBLIC__/Uploads/examination/{$file.picture2}"></p> 
+       <div style="height: 30px; color: #adadad;text-align: center;margin-top: 15px;">----- 百信学车 -----</div>
+</div>
+<!-- <div class="zhezhao">
+    <div class="eacm"></div>
+    <div class="abso">
+        <input type="text" class="serch" placeholder="输入手机号,查看是否参加" name="phone"/>
+        <button class="bton" onclick="search()">搜索</button>
+    </div>
+
+</div> -->
+
+
+</body>
+</html>

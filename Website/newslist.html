@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百信学车 - 新闻列表</title>
+	<meta name="keywords" content=" ">
+	<meta name="description" content=" ">
+	<script src="__PUBLIC__/Home/website/js/jquery-1.11.3.js"></script>
+	<script src="__PUBLIC__/Home/website/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/Home/website/css/bootstrap.css" />
+    <script src="__PUBLIC__/Home/website/js/layer/layer.js" type="text/javascript"></script>
+    <script src="__PUBLIC__/Home/website/js/index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Home/website/css/index.css" />
+</head>
+<body>
+	<!-- top-nav -->
+	<div class="top-nav col-lg-12">
+		<div class="col-lg-6">
+			<img src="__PUBLIC__/Home/website/images/logo.png" alt="百信学车logo" class="logo-img">
+		</div>
+		<div class="top-nav-menu col-lg-6">
+			<ul>
+				<li><a href="{:U('Home/Website/index')}">首页</a></li>
+				<li><a href="{:U('Home/Website/sijiao')}">私教</a></li>
+				<li><a href="{:U('Home/Website/peilian')}">陪练</a></li>
+				<li style="color:#EF5F00;border-bottom:2px solid #EF5F00;"><a href="{:U('Home/Website/newslist')}">新闻中心</a></li>
+				<li><a href="{:U('Home/Website/canvass')}">招商加盟</a></li>
+				<li><a href="{:U('Home/Website/lianxi')}">联系我们</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="bg-top"></div>
+	<!-- 新闻中心->新闻详情 -->
+	<div class="news-del-box">
+		<!-- 页面定位 --><div class="ymdw">当前位置：<span>新闻中心</span><span style="color:#F26C15; "></span> </div> 
+		
+		<!-- 以下新闻列表 -->
+		<volist name="data" id="vo">
+		<div class="news-list-view">
+			
+				<a href="{:U('Website/xinwen')}?newsid={$vo.newsid}">
+				<div class="col-lg-4">
+					<img src="{$vo.picture}" style="width: 300px;height:160px;margin:20px 20px 0 0">
+				</div>
+				<div class="col-lg-8">
+					<h2>{$vo.title}</h2>
+					<p>{$vo.subtitle}......</p>
+					<span>{$vo.time}</span>
+				</div>
+				</a>
+				
+		</div>
+		</volist>
+<!-- 	<script>
+	for(var i =0;i<7;i++){
+		$(function(){
+			var str = $('.news-list-view').find('p').eq(i).text().substr(0,10) + '......';
+			$('.news-list-view').find('p').eq(i).text(str);
+		})
+	}
+	</script> -->
+        <div class="page" style="width: 500px;height: 30px;margin:50px 800px;padding-bottom:30px;color:#C2C2C0;">{$page}</div>
+	</div>
+     
+	<!-- 底部foot -->
+	<div class="footer">
+		<div class="foot-del">
+			<ul>
+				<li style="margin-left:0;">
+					<h3>联系我们</h3>
+					<a href="javascript:void(0)"><p>客户服务</p></a>
+					<a href="javascript:void(0)"><p>0551-65555744</p></a>
+				</li>
+				<li>
+					<h3>帮助中心</h3>
+					<a href="{:U('Website/solution')}"><p>学员常见问题</p></a>
+					<a href="{:U('Website/xieyi')}"><p>用户协议</p></a>
+				</li>
+				<li>
+					<h3>公司信息</h3>
+					<a href="{:U('Website/description')}"><p>关于我们</p></a>
+					<a href="{:U('Website/canvass')}"><p>合作加盟</p></a>
+				</li>
+				<li>
+					<h3>APP下载</h3>
+					<a href="http://android.myapp.com/myapp/detail.htm?apkName=com.jgkj.bxxc" target="_blank"><p>安卓下载</p></a>
+					<a href="https://itunes.apple.com/cn/app/bai-xin-xue-che/id1187039266?mt=8" target="_blank"><p>IOS下载</p></a>
+				</li>
+				<li>
+					<h3>关注我们</h3>
+					<img src="__PUBLIC__/Home/website/images/ewm.png" alt="微信公众号">
+				</li>
+			</ul>
+		</div>
+		<div class="foot-bottom">
+			<p>"百信学车"由合肥九鬼网络科技有限公司研发并拥有版权 合肥市经济技术区莲花电子创新产业园A座307皖ICP备16021622号</p>
+		</div>
+
+	</div>
+</body>
+</html>

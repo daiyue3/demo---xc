@@ -1,0 +1,245 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>百信学车-车接车送</title>
+		<link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+		<style>
+        #content{
+            margin-top: 5rem;
+        }
+        #content table{
+            background-color: #fff;
+            padding: 1rem;
+            width:100%;
+        }
+        #content th,#content td{
+            text-align: center;
+            height: 4.6rem;
+            line-height: 4.6rem;
+        }
+        #content th{
+            font-weight: 600;
+            background-color: #ddd;
+            border:1px solid #ccc;
+            color: #666;
+        }
+        #content td{
+            border:1px solid #ddd;
+            color: #666;
+        }
+    </style>
+    <!--引用百度地图API-->
+    <style type="text/css">
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=sSelQoVi2L3KofLo1HOobonW"></script>
+    <title>车接车送</title>
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;text-align:center;">
+        <a href="javascript:history.back(-1)" class="pull-left"><i class="glyphicon glyphicon-menu-left" style="color: white;font-size:2rem;margin-left: 1rem;line-height: 4.6rem;"></i></a>
+        <span style="line-height: 4.6rem;font-size: 2rem;color: white;margin-left: -3rem;">接送路线</span>
+    </div>
+</div>
+<div id="content">
+    <table>
+        <tr>
+            <th>车站名</th>
+            <th>位置说明</th>
+            <th>到站时间</th>
+        </tr>
+        <tr>
+            <td>海恒社区</td>
+            <td>繁华大道与习友路交口</td>
+            <td>6:00</td>
+        </tr>
+        <tr>
+            <td>明珠广场</td>
+            <td>金寨路与繁华大道交口</td>
+            <td>6:30</td>
+        </tr>
+        <tr>
+            <td>中环城</td>
+            <td>翡翠路与繁华大道交口西北角</td>
+            <td>7:00</td>
+        </tr>
+        <tr>
+            <td>港澳广场</td>
+            <td>翡翠路与芙蓉路</td>
+            <td>7:30</td>
+        </tr>
+        <tr>
+            <td>一里洋房</td>
+            <td>芙蓉路与繁华大道交口西北角</td>
+            <td>8:00</td>
+        </tr>
+         <tr>
+            <td>安大新区</td>
+            <td>翡翠路安大新区南门</td>
+            <td>8:30</td>
+        </tr>
+    </table>
+</div>
+<!--百度地图容器-->
+<div style="width:100%;height:45%;background:#fff;margin-bottom:15%;">
+<div id="dituContent" style="width: 100%;height:100%;margin:5% auto;"></div>
+</div>
+<footer>
+    <nav class="nav navbar-fixed-bottom foot_fix">
+        <ul class="clearfix">
+            <li class="pull-left"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+            <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+            <li class="pull-left cur"><a href="{:U('Home/Index/car')}"><i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+            <li class="pull-left"><a href="{:U('Home/User/index')}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+        addPolyline();//向地图中添加线
+        addRemark();//向地图中添加文字标注
+    }
+
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(117.22426,31.777133);//定义一个中心点坐标
+        map.centerAndZoom(point,13);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+        var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+        map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+        map.addControl(ctrl_sca);
+    }
+
+    //标注点数组
+    var markerArr = [{title:"海恒社区",content:"位置说明：繁华大道与习友路交口<br/>到站时间：6:00",point:"117.263744|31.784184",isOpen:0,icon:{w:23,h:25,l:0,t:21,x:9,lb:12}}
+        ,{title:"明珠广场",content:"位置说明：金寨路与繁华大道交口<br/>到站时间：6:30",point:"117.231171|31.785044",isOpen:0,icon:{w:23,h:25,l:92,t:21,x:9,lb:12}}
+        ,{title:"中环城",content:"位置说明：翡翠路与繁华大道交口西北角<br/>到站时间：7:00",point:"117.216277|31.788343",isOpen:0,icon:{w:23,h:25,l:92,t:21,x:9,lb:12}}
+        ,{title:"港澳广场",content:"位置说明：翡翠路与芙蓉路<br/>到站时间：7:30",point:"117.216448|31.794881",isOpen:0,icon:{w:23,h:25,l:92,t:21,x:9,lb:12}}
+        ,{title:"一里洋房",content:"位置说明：芙蓉路与繁华大道交口西北角<br/>到站时间：8:00",point:"117.196487|31.788221",isOpen:0,icon:{w:23,h:25,l:92,t:21,x:9,lb:12}}
+        ,{title:"安大新区",content:"位置说明：翡翠路与汤口路交口安大新区南门<br/>到站时间：8:30",point:"117.194215|31.761337",isOpen:0,icon:{w:23,h:25,l:46,t:21,x:9,lb:12}}
+    ];
+    //创建marker
+    function addMarker(){
+
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+            var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+            var iw = createInfoWindow(i);
+            var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+            marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                borderColor:"#808080",
+                color:"#333",
+                cursor:"pointer"
+            });
+
+            (function(){
+                var index = i;
+                var _iw = createInfoWindow(i);
+                var _marker = marker;
+                _marker.addEventListener("click",function(){
+                    this.openInfoWindow(_iw);
+                });
+                _iw.addEventListener("open",function(){
+                    _marker.getLabel().hide();
+                })
+                _iw.addEventListener("close",function(){
+                    _marker.getLabel().show();
+                })
+                label.addEventListener("click",function(){
+                    _marker.openInfoWindow(_iw);
+                })
+                if(!!json.isOpen){
+                    label.hide();
+                    _marker.openInfoWindow(_iw);
+                }
+            })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json){
+        var icon = new BMap.Icon("http://map.baidu.com/image/us_cursor.gif", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    //标注线数组
+    var plPoints = [{style:"solid",weight:6,color:"#00f",opacity:0.6,points:["117.26378|31.784338","117.261336|31.78268","117.234603|31.782619","117.231009|31.785013","117.231369|31.785197"]}
+        ,{style:"solid",weight:6,color:"#00f",opacity:0.6,points:["117.231009|31.785136","117.225835|31.788328","117.216421|31.788205"]}
+        ,{style:"solid",weight:6,color:"#00f",opacity:0.6,points:["117.216376|31.788481","117.216448|31.794988","117.216412|31.794988"]}
+        ,{style:"solid",weight:6,color:"#00f",opacity:0.6,points:["117.21634|31.794957","117.204339|31.794712","117.202542|31.794466","117.20168|31.794221","117.201105|31.793914","117.200602|31.793607","117.199955|31.793116","117.199236|31.792441","117.198949|31.792134","117.198661|31.791704","117.198374|31.791213","117.198015|31.790845","117.196577|31.788205","117.196577|31.788267"]}
+        ,{style:"solid",weight:6,color:"#00f",opacity:0.6,points:["117.196505|31.788144","117.184145|31.770954","117.194493|31.761376","117.194062|31.761744"]}
+    ];
+    //向地图中添加线函数
+    function addPolyline(){
+        for(var i=0;i<plPoints.length;i++){
+            var json = plPoints[i];
+            var points = [];
+            for(var j=0;j<json.points.length;j++){
+                var p1 = json.points[j].split("|")[0];
+                var p2 = json.points[j].split("|")[1];
+                points.push(new BMap.Point(p1,p2));
+            }
+            var line = new BMap.Polyline(points,{strokeStyle:json.style,strokeWeight:json.weight,strokeColor:json.color,strokeOpacity:json.opacity});
+            map.addOverlay(line);
+        }
+    }
+    //文字标注数组
+    /*var lbPoints = [{point:"117.260007|31.78974",content:"起点"}
+        ,{point:"117.190873|31.766779",content:"终点"}
+    ];*/
+    //向地图中添加文字标注函数
+    function addRemark(){
+        for(var i=0;i<lbPoints.length;i++){
+            var json = lbPoints[i];
+            var p1 = json.point.split("|")[0];
+            var p2 = json.point.split("|")[1];
+            var label = new BMap.Label("<div style='padding:2px;'>"+json.content+"</div>",{point:new BMap.Point(p1,p2),offset:new BMap.Size(3,-6)});
+            map.addOverlay(label);
+            label.setStyle({borderColor:"#999"});
+        }
+    }
+
+    initMap();//创建和初始化地图
+</script>
+</html>

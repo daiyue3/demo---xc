@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>免费领取百信学车一对一私教体验券</title>
+    <meta name="description" content="">
+
+    <script src="__PUBLIC__/App/Index/js/jquery-1.11.3.js"></script>
+    <script src="__PUBLIC__/App/Index/js/fastclick.js"></script>
+    <script src="__PUBLIC__/App/Index/js/layer/mobile/layer.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/jizan.css">
+    <script>
+      $(function() {
+        FastClick.attach(document.body);
+        $("#contenter-btn").click(function(){
+            var val = $("#contenter-phone").val();
+            var pattern = /^1[34578]\d{9}$/;  
+            if(!pattern.test(val)){
+            layer.open({
+            content:'手机号码错误',
+            skin: 'msg',
+            time: 3 //2秒后自动关闭
+            });
+            return;
+            }
+            var urls = 'activitydz';
+            var data = "phone="+val;
+            var type = "post";
+            ajaxfunc(urls,data,type);
+            });
+      });
+
+
+            function ajaxfunc(urls,data,type){
+                $.ajax({
+                    url: urls,
+                    data: data,
+                    type:type,
+                    success: function (info) {
+                        if (info==0) {
+                            layer.open({
+                                content: '对不起，本次活动仅限私教新用户',
+                                btn: '我知道了'
+                            });
+
+                            return false;
+                        }else if(info==2){
+                            layer.open({
+                                    content:'<span style="font-size:20px;">您已经获得活动资格</span><br>分享朋友圈集齐40个赞，领取私教体验一次',
+                                    btn:'我知道了'
+                            });
+                        }else{
+                            layer.open({
+                                    content:'<span style="font-size:20px;">恭喜获得活动资格</span><br>分享朋友圈集齐40个赞，领取私教体验一次<br><p style = "margin-top:20px;"><a href="http://www.baixinxueche.com/index.php/Home/info/download.html" style="text-decoration: none; ">下载百信学车APP</a></p>',
+                                    btn:"<a>www.baixinxueche.com</a>",
+                                    yes: function(index){
+                                        alert("xxxxxx");
+                                        layer.close(index);
+                                    }
+                            });
+                        }
+                    },
+                    error:function(){
+                        layer.open({
+                            content: '系统繁忙，稍后再试!',
+                            btn: '我知道了'
+                        });
+                    }
+                })
+
+            }
+
+
+    </script>
+</head>
+
+<body style="margin:0">
+    <!-- <div><img src="__PUBLIC__/App/Index/images/top.png" width="300" height="300"></div> -->
+    <div class="top" >
+        <div class="top-img-holder" style="padding-top: 75%;"></div>
+    </div>
+    <div class="contenter">
+<!--         <section id="contenter-logo">
+    <img src="__PUBLIC__/App/Index/images/logo.png" alt="">
+</section> -->
+        <section id="contenter-title">百信学车，品质私教</section>
+        <section id="contenter-sub">欢迎体验一对一私教学车服务</section>
+        <section class="contenter-wrap">
+            <input type="tel" id="contenter-phone" maxlength="11" placeholder="输入手机号">
+        </section>
+        <section class="contenter-wrap">
+            <span id="contenter-btn">点击领取活动资格</span>
+        </section>
+        <section class="contenter-wrap">
+            <a href="http://www.baixinxueche.com/index.php/Home/info/download.html" style="text-decoration: none;" id="contenter-btn1">下载百信学车APP</a>
+        </section>
+        <section id="contenter-tips">
+            <div class="text">
+                <h1 style="font-weight: 1000;font-size: 16px;">一　参与对象：</h1>
+                    <p style="text-align: left; margin:4px 0;">本次活动参与对象仅限于百信学车私教新学员。</p>
+                <h1 style="font-weight: 1000;font-size: 16px; margin-top: 20px;">二　活动时间：</h1>
+                    <p style="text-align: left; margin:4px 0;">2017年7月22日—2017年8月22日。</p>
+                <h1 style="font-weight: 1000;font-size: 16px; margin-top: 20px;">三　活动规则：</h1>
+                    <p style="text-align: left; margin:4px 0;">1、转发该活动页面至微信朋友圈，通过集赞数量获得相应的学车私教服务次数。</p>
+                    <p style="text-align: left; margin:4px 0;">2、邀请３位朋友转发，并集满40个赞，即可免费领取一次价值288元私教教学车体验，将集赞截图发至活动微信号，下载并注册百信学车APP，即可预约私教练车。</p>
+                    <p style="text-align: left; margin:4px 0;">3、 学员将当天私教学车体验照片发至朋友圈，集满40个赞，可再次获取私教学车体验一次。</p>
+                    
+<p style="text-align: left; margin:4px 0;">4、 活动微信号:17756086205</br>活动咨询电话  <a href="tel:15656031338" id="footer-link" style="text-decoration: none;">15656031338 (张)</a></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:18656413056" id="footer-link" style="text-decoration: none;">18656413056 (余)</a></br>活动投诉电话 <a href="tel:18788865888" id="footer-link" style="text-decoration: none;">18788865888 (倪)</a></p>
+                     <p style="text-align: left; margin:4px 0;">5、 免费体验两次封顶，获取的活动资格仅限本人使用，不可转赠。本活动最终解释权归百信学车所有。</p>
+            </div>
+        </section>
+    </div>
+<!--     <div id="footer">
+    <img src="__PUBLIC__/App/Index/images/logo1.png" alt="" id="footer-logo">
+    <p id="footer-tips">
+        私教专属客服电话：
+        <a href="tel:177 5608 6205" id="footer-link">177 5608 6205</a>
+    </p>
+</div> -->
+
+
+    
+</body>
+</html>

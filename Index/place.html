@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+        <title>百信学车</title>
+
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/place.css">
+</head>
+<body>
+<div class="shop_wrapper" id="root">
+    <nav class="nav navbar-fixed-top list_nav clearfix text-center">
+        <div class="logo">
+            <!--<img src="__PUBLIC__/App/Index/img/logo.png" style="width: 116px; height: 27px;">-->
+            <a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-menu-left pull-left" style="color: white;font-size: 2rem;margin-left: 1rem;position:relative;top:17px;"></i></a>
+            <span style="color: #fff;font-size: 2rem;margin-left: -3rem;">
+                场地列表
+            </span>
+        </div>
+
+    </nav>
+    <main class="list_m">
+        <div class="pro_body">
+            <ul class="clearfix">
+            <volist name="school" id="vo"> 
+                <li class="pull-left">
+                    <div class="pro_info">
+                        <div class="proimg">
+                            <a href="{:U('Home/Coach/coaches')}"><img src="__PUBLIC__/App/Index/img/pro2.jpg" /></a>
+                        </div>
+                        <div class="proname">
+                            <a href="{:U('Home/Coach/coaches')}">{$vo.sname}</a>
+                        </div>
+                        <div class="proprice_p">具体地址：{$vo.faddress}</div>
+                    </div>
+                </li>
+            </volist>
+               <!--  <li class="pull-left">
+                    <div class="pro_info">
+                        <div class="proimg">
+                            <a href="{:U('Home/Coach/coaches')}"><img src="__PUBLIC__/App/Index/img/pro2.jpg" /></a>
+                        </div>
+                        <div class="proname">
+                            <a href="{:U('Home/Coach/coaches')}">经开区中心校区</a>
+                        </div>
+                        <div class="proprice_p">具体地址：莲花路与汤口路交口向西200米</div>
+                    </div>
+                </li>
+                <li class="pull-left">
+                    <div class="pro_info">
+                        <div class="proimg">
+                            <a href="{:U('Home/Coach/coaches')}"><img src="__PUBLIC__/App/Index/img/pro2.jpg" /></a>
+                        </div>
+                        <div class="proname">
+                            <a href="{:U('Home/Coach/coaches')}">蜀山区新华校区</a>
+                        </div>
+                        <div class="proprice_p">具体地址：玉兰大道与望江西路交口向南200米</div>
+                    </div>
+                </li>
+                <li class="pull-left">
+                    <div class="pro_info">
+                        <div class="proimg">
+                            <a href="{:U('Home/Coach/coaches')}"><img src="__PUBLIC__/App/Index/img/pro1.jpg" /></a>
+                        </div>
+                        <div class="proname">
+                            <a href="{:U('Home/Coach/coaches')}">包河区第一校区</a>
+                        </div>
+                        <div class="proprice_p">具体地址：繁华大道与宿松路交口向南200米</div>
+                    </div>
+                </li>
+                <li class="pull-left">
+                    <div class="pro_info">
+                        <div class="proimg">
+                            <a href="{:U('Home/Coach/coaches')}"><img src="__PUBLIC__/App/Index/img/pro2.jpg" /></a>
+                        </div>
+                        <div class="proname">
+                            <a href="{:U('Home/Coach/coaches')}">包河区第一校区</a>
+                        </div>
+                        <div class="proprice_p">具体地址：繁华大道与宿松路交口向南200米</div>
+                    </div>
+                </li>
+                <li class="pull-left">
+                    <div class="pro_info">
+                        <div class="proimg">
+                            <a href="{:U('Home/Coach/coaches')}"><img src="__PUBLIC__/App/Index/img/pro1.jpg" /></a>
+                        </div>
+                        <div class="proname">
+                            <a href="{:U('Home/Coach/coaches')}">包河区第一校区</a>
+                        </div>
+                        <div class="proprice_p">具体地址：繁华大道与宿松路交口向南200米</div>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+        <div class="copyright">
+            <p class="text-center">Copyright@2014-2016百信学车版权所有</p>
+        </div>
+    </main>
+    <footer>
+            <nav class="nav navbar-fixed-bottom foot_fix">
+                <ul class="clearfix">
+                    <li class="pull-left"><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+                </ul>
+            </nav>
+        </footer>
+    <div class="backtop">
+        <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+    </div>
+    </div>
+<div class="zezhao hide">
+
+</div>
+
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script>
+
+    $(".nav .list_menu .btn-menu").mouseenter(function(){
+        $(".nav .list_menu ul.category").removeClass('hide').addClass("show");
+        $(".zezhao").removeClass('hide').addClass('show');
+        $("body,#root").height($(window).height()).css({
+            "overflow-y": "hidden"
+        });
+    });
+    $(".zezhao").css({ "width": $(document).width(), "height": $(document).height() });
+    $(".zezhao").click(function(){
+        $(".nav .list_menu ul.category").removeClass('show').addClass("hide");
+        $(this).removeClass('show').addClass('hide');
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/setting.css">
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;">
+        <a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-menu-left" style="color: white;margin-left: 1rem; font-size:1.8rem;"></i></a>
+        <span style="line-height: 4.6rem;font-size: 2rem;color: white;">修改用户名</span>
+    </div>
+    <div class="seetingName">
+        <form action="{:U('Home/User/setname')}" id="settingName" method="post">
+            <input type="hidden" name="uid" value="{$uid}">
+            <input type="text" name='name' placeholder="姓名" class="setting_name">
+            <input type="submit" value="保&nbsp;&nbsp;存" class="btn">
+        </form>
+    </div>
+</div>
+</body>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+
+</html>

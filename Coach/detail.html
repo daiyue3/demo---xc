@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>确认预约</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/detail.css">
+</head>
+<body>
+    <div id="root" class="shop_wrapper">
+        <nav class="nav navbar-fixed-top list_nav clearfix text-center" id="nav" >
+            <!-- 头部 -->
+            <div class="pull-left text-center clearfix">
+                <a href="javascript:history.back(-1)">
+                    <i class="glyphicon glyphicon-menu-left" style="font-size: 2rem;color: #ffffff;margin-left: 1rem;line-height: 4.6rem;"></i>
+                </a>
+            </div>
+            <i style="font-size: 2rem;color: #ffffff;line-height: 4.6rem;margin-left: 2rem;">教练详情</i>
+			<a href="{:U('Home/Msg/index')}">
+            <div class="list_menu pull-right text-center clearfix">
+                <img src="__PUBLIC__/App/Index/img/talk.png" alt="" style="width:2.5rem;">
+            </div>
+			</a>
+        </nav>
+        <div class="bdsharebuttonbox" data-tag="share_1">
+            <a class="bds_weixin" data-cmd="weixin"></a>
+            <a class="bds_sqq" data-cmd="sqq"></a>
+            <a class="bds_tsina" data-cmd="tsina"></a>
+        </div>
+        <script>
+            function btn(){
+                $wid = parseInt($('body').width())/2-70;
+                $(".zezhao").removeClass('hide').addClass('show').css({'position':'fixed','background':'#4b4b4b','z-index':'10000'});
+                $('body').css('overflow-y','hidden');
+                $(".zezhao").click(function(){
+                    $('body').css('overflow-y','auto');
+                })
+                $(".bdsharebuttonbox").show().css('left',$wid+'px').children('a').css('margin-right','15px');
+            }
+            window._bd_share_config = {
+                common:{
+                    //通用设置
+                    bdText:'百信学车',
+                    bdDesc:'好的学车网站',
+                    bdUrl:'http://www.ah.xinhuanet.com/20160921/3450469_c.html'
+                },
+                share: [{
+                    //分享按钮设置
+                    "tag" : "share_1",
+                    "bdSize" : 32,
+
+                },{
+                    "tag" : "share_2",
+                    "bdSize" : 16,
+
+                }]
+            }
+
+            //以下为js加载部分
+            with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+      
+        <main>
+            <div class="person">
+                <img src="__PUBLIC__/App/Index/coach/{$zhuye}">
+            </div>
+            <div class="message">
+                <P class="hong">教练员：<i>{$cname}</i><span style="color:#7dd0ff;border: 1px solid #ddd;border-radius: 3px;font-size: 1.2rem;position: relative;top:-2px;margin-left:.5rem;padding: .1rem .5rem;margin-left: 1rem">科目二教练</span><!--<span class="pull-right">分享</span>--></P>
+                <p class="message_local">{$school}<i>车型:{$car}</i><em>班型:{$class}</em></p>
+                <p class="baixin">百信价：<i>¥{$price}</i></p>
+                <p>市场价：<i>¥{$baixinprice}</i></p>
+                <p class="renshu clearfix"><span class="pull-left">当前学员数<i>{$num}人</i></span><span >累计学员数<i>{$nums}</i>人</span><span class="pull-right">通过率<i>{$pass}%</i></span></p>
+            </div>
+            <div class="zheng clearfix">
+                <ul>
+                    <li><img src="__PUBLIC__/App/Index/img/gouxuan.png">75天拿证</li>
+                    <li><img src="__PUBLIC__/App/Index/img/gouxuan.png">车接车送</li>
+                    <li><img src="__PUBLIC__/App/Index/img/gouxuan.png">预约学车</li>
+                    <li><img src="__PUBLIC__/App/Index/img/gouxuan.png">预约考试</li>
+                </ul>
+            </div>
+            <div class="pingjia">
+                <ul>
+                    <li class="even">信用：<img src="__PUBLIC__/App/Index/img/xin_{$credit}.gif"><i>好评率：{$praise}%</i></li>
+                    <li>教学质量：<i><img src="__PUBLIC__/App/Index/img/star{$teach}.png" style="height: 14px;">{$teach}分</i></li>
+                    <li>服务态度：<i><img src="__PUBLIC__/App/Index/img/star{$wait}.png" style="height: 14px;">{$wait}分</i></li>
+                </ul>
+            </div>
+            <input type="hidden" name="trade_status" value="{$trade_status}" id="hidden">
+            <div class="niming">
+                <p>学员评价<i>(5条)</i></p>
+                <div>
+                    <p><img src="__PUBLIC__/App/Index/img/xingming(1).png" style="width: 1.5rem;margin-right: .5rem;"><span style="position: relative; top:.2rem;">匿名评价</span></p>
+                    <p style="font-size:1.2rem;margin-bottom: .4rem;">百信学车平台真心不错！给五星好评！</p>
+                     <p style="font-size:1.2rem;color:#919191;">2016年11月11日</p>
+                </div>
+                <div class="getMore">
+                    <button>查看全部评价</button>
+                </div>
+            </div>
+        </main>
+        <div class="backtop">
+            <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+        </div>
+    </div>
+        <footer>
+                <span class="number"><a href="tel:0551-65555744">联系客服</a></span>
+                <span class="baoming"><a href="{:U('Home/Coach/pay')}">立即报名</a></span>
+        </footer>
+    </div>
+    <!-- 遮罩层 -->
+    <div class="zezhao hide">
+        
+    </div>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script>
+
+    $(".zan").click(function(){
+        $(".zans").removeClass('hide').addClass('show');
+        $(this).removeClass('show').addClass('hide');
+    });
+    $(".zans").click(function(){
+        $(".zan").removeClass('hide').addClass("show");
+        $(this).removeClass('show').addClass('hide');
+    });
+    $(".collect_s").click(function(){
+        $(".collect_a").removeClass('hide').addClass('show');
+        $(this).removeClass('show').addClass('hide');
+    });
+    $(".collect_a").click(function(){
+        $(".collect_s").removeClass('hide').addClass("show");
+        $(this).removeClass('show').addClass('hide');
+    });
+    $('.zezhao').click(function () {
+        $('.bdsharebuttonbox').hide();
+        $(this).removeClass('show').addClass('hide');
+        $('#bdshare_weixin_qrcode_dialog').hide();
+    });
+
+
+
+    $(function () {
+        var data = $("#hidden").val();
+		console.log(data);
+        if(data == 1){
+            $(".baoming a").attr("href","javascript:;").click(function(){
+                alert("亲,您已经报过名啦!快去学车进程看看进度吧~");
+            });
+
+
+        }
+    })
+
+
+</script>
+</body>
+</html>

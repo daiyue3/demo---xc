@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>Title</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/setting.css">
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;">
+        <a href="javascript:history.back(-1)"><i class="glyphicon glyphicon-menu-left" style="color: white;margin-left: 1rem; font-size:1.8rem;"></i></a>
+        <span>
+            个人信息
+        </span>
+    </div>
+    <div class="seeting">
+        <volist name="data" id="vo"><ul class="setting_p">
+            <a href="{:U('Home/User/img')}?uid={$vo.uid}" style="color: #0e0e0e">
+            <li class="setting_t">
+                <span style="float: left">头像</span>
+                <i class="glyphicon glyphicon-menu-right pull-right file_pic" ></i>
+                <img src="__PUBLIC__/App/Index/student/{$vo.file}" id="photo">
+            </li>
+            </a>
+            <li class="setting_name">
+                <a href="{:U('Home/User/name')}?uid={$vo.uid}">
+                    <span>用户名</span>
+                    <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                    <span class="pull-right">{$vo.name}</span>
+                </a>
+            </li>
+            <li class="setting_word">
+                <a href="{:U('Home/User/passwd')}?uid={$vo.uid}">
+                    <span>修改登录密码</span>
+                    <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                </a>
+            </li>
+        </ul></volist>
+        <div class="setting_tuichu">
+            <a href="{:U('Home/Login/loginout')}" style="color: #fff"><button>退&nbsp;出</button></a>
+        </div>
+    </div>
+</div>
+</body>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script>
+    $(function() {
+        $('#img').change(function() {
+            var file = this.files[0];
+            var r = new FileReader();
+            r.readAsDataURL(file);
+            $(r).load(function() {
+                $('#photo').attr("src",this.result);
+            });
+
+        })
+    })
+</script>
+</html>

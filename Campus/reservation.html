@@ -1,0 +1,163 @@
+<!-- <?php
+session_start(); 
+if (empty(session('uid'))) {
+    header("Location: http://www.baixinxueche.com/index.php/Home/Campus/insertMessge.html");exit;
+}
+?> -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>申请报名</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		*{
+			font-size: 12px;
+		}
+		input,select{
+			outline: none;
+			width: 150px;
+			height: 36px;
+			padding-left: 10px;
+			border: none;
+			border: 1px solid #aaa;
+			border-radius: 5px;
+		}
+		form{
+			
+			
+		}
+		td{
+			padding-left: 1rem;
+			position-top: 1rem;
+			padding-bottom: 1rem;
+		}
+
+		label{
+			display: inline-block;
+			text-align: center;
+			width: 100%;
+			color: #666;
+			font-size: 12px;
+		}
+		.time{
+			font-size: 8px;
+		}
+		.title{
+			padding: 0;
+		}
+		#name{
+			width: 137px;
+
+		}
+		.btn{
+			float: right;
+			padding: 8px 16px;
+			margin-right: 58px;
+			border:1px solid #3891ca;
+			border-radius: 4px;
+			outline: none;
+			background-color: #3891ca;
+			font-size: 14px;
+			color: #fff;
+
+		}
+		@media (min-width: 414px){
+			.btn{
+			
+				margin-right: 78px;
+			
+
+			}
+		}
+		@media (max-width: 320px){
+			.btn{
+			
+				margin-right: 28px;
+			
+
+			}
+		}
+	</style>
+		
+</head>
+<body>
+
+	<div class="img">
+		<img src="__PUBLIC__/App/img/lbo1.png" alt="" width="100%">
+	</div>	
+	
+    <form action="{:U('Home/Apitokenmsg/activeRes')}" method="post" >
+
+	    <table cellspacing="0" border="0" height="350px" align="left" width="100%">
+	           <tr>
+	           	<td colspan="3" style="text-align: center;font-size: 16px;font-weight: 600;" class="title">预约体验活动申请</td>
+	           </tr>
+	    	    <tr>
+	    	    	<td colspan="3" style="height: 30px;line-height: 30px" >
+	    	    		<label style="font-size: 16px;" for="name">真实姓名：
+	    	    			<input type="text" name="name" id="name" placeholder="请输入真实姓名">
+	    	    		</label>
+	    	    	</td>
+	    	    </tr>
+				<tr>
+	    	    	<td colspan="3" style="height: 30px;line-height: 30px" >
+	    	    		<label style="font-size: 16px;" for="date">选择日期：
+		    	    		<select name="dates" id="date"  style="color: #EA2000;">
+		    	    			<option value="0">请选择日期</option>
+		    	    			<option value="<?php echo date("Y-m-d",strtotime("+2 day")); ?>"><?php echo date("Y-m-d",strtotime("+2 day")); ?></option>
+		    	    			<option value="<?php echo date("Y-m-d",strtotime("+3 day")); ?>"><?php echo date("Y-m-d",strtotime("+3 day")); ?></option>
+		    	    			<option value="<?php echo date("Y-m-d",strtotime("+4 day")); ?>"><?php echo date("Y-m-d",strtotime("+4 day")); ?></option>
+		    	    			<option value="<?php echo date("Y-m-d",strtotime("+5 day")); ?>"><?php echo date("Y-m-d",strtotime("+5 day")); ?></option>
+		    	    			<option value="<?php echo date("Y-m-d",strtotime("+6 day")); ?>"><?php echo date("Y-m-d",strtotime("+6 day")); ?></option>
+		    	    			<option value="<?php echo date("Y-m-d",strtotime("+7 day")); ?>"><?php echo date("Y-m-d",strtotime("+7 day")); ?></option>
+								<option value="<?php echo date("Y-m-d",strtotime("+8 day")); ?>"><?php echo date("Y-m-d",strtotime("+8 day")); ?></option>
+		    	    		</select>
+	    	    		</label>
+	    	    	</td>
+	    	    </tr>
+	    	    <tr>
+	    	    	<td colspan="3" style="height: 30px;line-height: 30px" >
+	    	    		<label style="font-size: 16px;" for="point">选择时间：
+		    	    		<select name="point" style="color: #EA2000;"> 
+		    	    			  <option value="0">请选择时间</option>
+			     	    	      <option value="08:00 - 09:00">08:00 - 09:00</option>
+			     	    	      <option value="09:00 - 10:00">09:00 - 10:00</option>
+			     	    	      <option value="10:00 - 11:00">10:00 - 11:00</option>
+			     	    	      <option value="11:00 - 12:00">11:00 - 12:00</option>
+			     	    	      <option value="13:30 - 14:30">13:30 - 14:30</option>
+			     	    	      <option value="14:30 - 15:30">14:30 - 15:30</option>
+			     	    	      <option value="15:30 - 16:30">15:30 - 16:30</option>
+			     	    	      <option value="16:30 - 17:30">16:30 - 17:30</option>
+			     	    	      <option value="19:00 - 20:00">19:00 - 20:00</option>
+			     	    	      <option value="20:00 - 21:00">20:00 - 21:00</option>
+		    	    	    </select>
+		    	    	</label>
+	    	    	</td>
+	    	    </tr>
+	    	    <tr>
+	    	    	<td colspan="3" style="height: 30px;line-height: 30px" >
+	    	    		<label style="font-size: 16px;" for="school">选择校区：
+		    	    		<select name="school" style="color: #EA2000;"> 
+		    	    			<option value="0">请选择校区</option>	
+			     	    	    
+	                       	    <option value="经开校区">经开校区</option>
+	                       	    <option value="包河校区">包河校区</option>
+	                       	    <option value="庐阳校区">庐阳校区</option>
+	                       	    <option value="蜀山校区">蜀山校区</option>
+		    	    	    </select>
+	    	    	    </label>
+	    	    	</td>
+	    	    </tr>
+
+
+	    	 
+	           <tr>
+	            	<td colspan="3"><button class="btn">提交申请</button></td>
+	           </tr> 
+	    </table> 
+     </form>
+     
+      <p style="text-align: center;color: #757575">如有预约疑问请致电：17756086208（工作日9:00-18:00）</p>
+</body>
+</html>

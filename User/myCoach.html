@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link href="__PUBLIC__/App/Index/css/coach_mine.css" rel="stylesheet">
+</head>
+<body>
+<div class="shop_wrapper">
+    <div class="nav navbar-fixed-top list_nav">
+        <a href="{:U('Home/User/index')}"><i class="glyphicon glyphicon-menu-left" style="color: white;font-size:2rem;margin-left: 1rem;line-height: 4.6rem;"></i></a>
+        <p class="coach">我的教练</p>
+    </div>
+    <main>
+        <volist name="coachinfo" id="coachinfo">
+            <section class="coach_three">
+                <div class="head">
+                    <p>我的科目二教练<span class="pull-right">已预约</span></p>
+                </div>
+                <div class="event clearfix">
+                    <a href="{:U('Home/Coach/detail')}?pid={$coachinfo.pid}"><img src="__PUBLIC__/App/Index/coach/{$coachinfo.coafile}" style="width: 19%;float: left;margin-right:.5rem;"></a>
+                    <span class="pull-left">
+                        <ul>
+                            <li class="name">教练员:<i>{$coachinfo.cname}</i></li>
+                            <li>{$coachinfo.school}&nbsp;<em>车型:<i>{$coachinfo.car}</i></em>&nbsp;<em>班型:<i>{$coachinfo.class}</i></em></li>
+                            <li class="stu"><span>当前学员数:<i>{$coachinfo.num}</i>人</span>&nbsp;&nbsp;<span>最多可教学员数:<i>25</i>人</span></li>
+                        </ul>
+                    </span>
+
+                </div>
+
+                <p class="order">亲，您已预约该教练为您的科目二教练，在您完成科目一考试后，若该教练下学员数未满，您可以确认选择该教练，如学员数已满，您可以选择其它教练或继续等待</p>
+            </section>
+            <section class="coach_for">
+                <div class="head">
+                    <p>我的科目三教练<span class="pull-right">待选择</span></p>
+                </div>
+                <div class="event">
+                    <p class="choose">亲，请完成科目二考试后，选择科目三教练哦！</p>
+                </div>
+            </section>
+        </volist>
+    </main>
+</div>
+
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+
+</body>
+</html>

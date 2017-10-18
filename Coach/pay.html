@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>付款</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/pay.css">
+</head>
+<body>
+<div class="shop_wrapper" id="root">
+    <div class="nav navbar-fixed-top list_nav" style="height: 4.6rem;background: #ff5000;">
+        <a href="javascript:history.back(-1)" class="pull-left"><i class="glyphicon glyphicon-menu-left" style="color: white;margin-left: 1rem;font-size:2rem;line-height: 4.6rem;"></i></a>
+        <div class="title pull-left">
+            确认订单
+        </div>
+		<a href="{:U('Home/Msg/index')}">
+        <div class="pull-right text-center clearfix">
+                <img src="__PUBLIC__/App/Index/img/talk.png" alt="" style="width:2.5rem;margin-right: 1rem;">
+        </div>
+		</a>
+    </div>
+
+    <main style="margin-top: 4.6rem;">
+        <div class="xiangqing">
+        </div>
+        <volist name="data" id="vo">
+        <div class="block_a clearfix">
+            <img src="__PUBLIC__/App/Index/coach/{$vo.coafile}" alt="">
+            <div class="block_a_text clearfix">
+                 <p class="Tname">教练员:<em>{$vo.cname}</em></p>
+                 <p class="Loca">{$vo.school}<span>车型:<em>{$vo.car}</em></span><span>班型:<em>{$vo.class}</em></span></p>
+                  <p class="money">¥{$vo.price}</p>
+            </div>
+        </div>
+        </volist>
+        <div class="xinxi">
+            <form name="alipayment" action="{:U('Home/Order/wappay')}" method="post">
+                <input type="hidden"  id="WIDout_trade_no" name="WIDout_trade_no"  />
+                <input type="hidden" name="WIDsubject" id="WIDsubject" />
+                <input type="hidden" name="WIDtotal_amount" id="WIDtotal_amount" />
+				<input type="hidden" name="WIDbody" id="WIDbody" />
+
+                <input type="hidden" name="uid" value="{$_SESSION['userid']}">
+                <input type="hidden" name="pid" value="{$vo.pid}">
+                <label>
+                    <span>真实姓名:</span>
+                    <input type="text" placeholder="请填写您的真实姓名" name="username" id="zsxm" value="">
+                </label>
+                <label>
+                    <span>身份证号:</span>
+                    <input type="text" placeholder="请填写您的身份证号码" name="idnum" id="sfz" value="">
+                </label>
+                <label>
+                    <span>推&nbsp;荐&nbsp;人:</span>
+                    <input type="text" placeholder="请填写您推荐人" name="tuijianren" id="sfza" value="">
+                </label>
+                <label>
+                    <span>手机号码:</span>
+                    <input type="text" placeholder="请输入手机号码" class="nunm"  name="phone"  id="phone" value="">
+                    <span class="yanzheng yzm"name="btn" value=""  id="getMessage" onmousedown="getDate()" disabled="disabled">获取验证码</span>
+                </label>
+                <label>
+                    <span>&nbsp;验&nbsp;证&nbsp;码:</span>
+                    <input type="number" placeholder="请填写6位数验证码" id="yzm" value="">
+                </label>
+
+                <footer>
+                    <span><!-- <em style="float: left;font-size: 1.4rem;margin-left: 1rem;color: black">立减:<em style="color: red;font-size: 1.6rem;">-300</em> 元</em> -->合计&nbsp;&nbsp;<em>¥{$vo.price}</em></span>
+                    <button type="submit" class="btn" disabled="true">确认支付</button>
+                </footer>
+
+            </form>
+
+        </div>
+
+        <div class="block_b clearfix">
+            <div class="block_b_text">请选择支付方式 :</div>
+
+            <div class="pull-left alipay"> 
+                        <ul>
+                            <li class="xuanze">
+                                <img src="__PUBLIC__/App/Index/img/123.png" class="hide">
+                                <img src="__PUBLIC__/App/Index/img/124.png" class="show">
+                            </li>
+                            <li class="picter pull-left">
+                                <img src="__PUBLIC__/App/Index/img/alipay.png" alt="">
+                            </li>
+                        </ul>
+            </div>
+            <!--<div class=" pull-left weixin">-->
+
+                        <!--<ul>-->
+                            <!---->
+                            <!--<li class="xuanze">-->
+                                <!--<img src="__PUBLIC__/Index/img/123.png" class="hide">-->
+                                <!--<img src="__PUBLIC__/Index/img/124.png" class="show">-->
+                            <!--</li>-->
+                            <!--<li class="picter pull-left">-->
+                                <!--<img src="__PUBLIC__/Index/img/weixin.png" alt="">-->
+                            <!--</li>-->
+                        <!--</ul>-->
+            <!--</div>-->
+        </div>
+        <div class="chick">
+            <input type="checkbox" style="position: relative;z-index: 0;">
+            <span>
+                我已阅读并同意<a href="clause.html">&nbsp;《百信学车服务条款》</a>
+            </span>
+        </div>
+    </main>
+    </div>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+
+<script>
+
+
+	var zsxmOk = false;
+	var phoneOk = false;
+    var pwOk = false;
+    var msgOk = false;
+
+    //判断中文
+    
+	
+    $("#zsxm").blur(function(){
+		var v = $(this).val();
+		console.log(v);
+        var t = $(this);
+         var reg = /^[\u4e00-\u9fa5]{0,}$/;
+       
+
+        if(v == ''){
+            
+            zsxmOk = false;
+        }else if(!reg.test(v)){
+            
+            zsxmOk = false;
+        }else{
+			
+           zsxmOk = true;
+           }
+
+    })
+
+    // 手机号失去焦点验证
+    $('#phone').blur(function(){
+        var v = $(this).val();
+		console.log(v);
+        var t = $(this);
+        var reg = /^[1][0-9]{10}$/;
+       
+
+        if(v == ''){
+            $(".yzm").attr("disabled",true);
+			
+            phoneOk = false;
+        }else if(!reg.test(v)){
+			
+            $(".yzm").attr("disabled",true);
+            phoneOk = false;
+        }else{
+			$(".yzm").attr("disabled","");
+			
+			phoneOk = true;
+           }
+
+    })
+    // 身份证失去焦点
+    $('#sfz').blur(function(){
+        var v = $(this).val();
+		console.log(v);
+        var t = $(this);
+
+        var reg = /^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X|x)$/;
+        if(v == ''){
+			
+            pwOk = false;
+        }else if(!reg.test(v)){
+			
+            pwOk = false;
+        }else{
+			
+            pwOk = true;
+        }
+    })
+// 验证码失去焦点
+    $("#yzm").blur(function(){
+        var v = $(this).val();
+        var t = $(this);
+       console.log(v);
+        if (v=="") { 
+			
+            msgOk = false;
+        }else{        
+			
+            msgOk=true;
+        };
+    })
+	 
+	 
+	function remainTime(){
+		var submcheckbox = $("input[type='checkbox']").is(':checked');
+		
+		if(phoneOk && pwOk && msgOk && zsxmOk && submcheckbox){
+			
+			$('.btn').css("background-color","#ff5000");
+			$(".btn").attr("disabled",false);
+			
+		}
+    }
+ setInterval("remainTime()",1000);  
+</script>
+
+
+<script>
+    $(function(){
+		
+		
+        $('.alipay').click(function(){
+            $(this).find('img.hide').attr('class','show').siblings('img.show').attr('class','hide');
+            if($('.weixin .xuanze img').eq(0).attr('class') == 'show'){
+                $('.weixin .xuanze img').eq(0).attr('class','hide');
+                $('.weixin .xuanze img').eq(1).attr('class','show');
+            }
+
+        });
+        $('.weixin').click(function(){
+            $(this).find('img.hide').attr('class','show').siblings('img.show').attr('class','hide');
+            if($('.alipay .xuanze img').eq(0).attr('class') == 'show'){
+                $('.alipay .xuanze img').eq(0).attr('class','hide');
+                $('.alipay .xuanze img').eq(1).attr('class','show');
+            }
+
+        });
+    })
+</script>
+
+
+<script language="javascript">
+    function GetDateNow() {
+        var vNow = new Date();
+        var sNow = "";
+        sNow += String(vNow.getFullYear());
+        sNow += String(vNow.getMonth() + 1);
+        sNow += String(vNow.getDate());
+        sNow += String(vNow.getHours());
+        sNow += String(vNow.getMinutes());
+        sNow += String(vNow.getSeconds());
+        sNow += String(vNow.getMilliseconds());
+        document.getElementById("WIDout_trade_no").value = sNow;
+        document.getElementById("WIDsubject").value = "百信学车";
+        document.getElementById("WIDtotal_amount").value = "{$price}";
+        document.getElementById("WIDbody").value = "服务费{$price}元";
+    }
+    GetDateNow();
+</script>
+
+
+<script type="text/javascript">
+    var wait=60;
+    function time(o) {
+        if($("#phone").val() == ""){
+            o.setAttribute("disabled", true);
+        }else if (wait == 0 ) {
+            o.removeAttribute("disabled");
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            wait--;
+            o.innerHTML=wait+"秒后重新发送";
+            if(wait==0){
+                o.removeAttribute("disabled");
+                o.innerHTML="获取验证码";
+            }
+            setTimeout(function() {
+                        time(o)
+                    },
+                    1000)
+        }
+    }
+    document.getElementById("getMessage").onclick=function(){time(this);}
+
+    function getDate(){
+        if($("#phone").val() == ""){
+            $("#getMessage").attr("disabled", true);
+        }else {
+            $.ajax({
+                type:"post",
+                url:"{:U('Home/Send/sendmsg')}",
+                data:{'phone':$("#phone").val()},
+                success:function( result ){
+                    if(result){
+                        alert("三分钟失效，请尽快使用")
+                    }
+                }
+            })
+        }
+
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>注册</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/forth_enter.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/register1.css">
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="shop_wrapper" id="root">
+    <nav class="nav navbar-fixed-top list_nav clearfix">
+        <p style="font-family: '楷体'">你的私教 百里挑一</p>
+    </nav>
+    <div class="ttt" style="position: relative;top: 60px;text-align: center ">本活动仅限于此次扫码注册的新用户</div>
+    <main>
+        <div class="event">
+            <form class="acction_l" action="" method="post" id="register-form">
+                <div class="messs">
+                    <div class="message_m" style="position: relative;">
+                        <input type="text" placeholder="请输入账号/手机号码" class="nunm" name="phone" id="phone">
+                        
+                    </div>
+                    <div class="message_m">
+                        <input type="text" placeholder="请输入验证码" class="numb pull-left" name="msg" id="yzm">
+                        <button class="yanzheng" name="btn" value="" id="getMessage"  style="background-color:#ff5000;color: #fff">获取验证码</button>
+                    </div>
+                    <div class="message_m clearfix">
+                        <input type="password" placeholder="请输入密码" class="num pull-left mima1" name="password">
+                    </div>
+                    <div class="message_m clearfix">
+                        <input type="password" placeholder="请再次输入密码" class="num pull-left mima2" name="passwda">
+                    </div>
+                </div>
+                <div class="message_m">
+                    <input type="submit" class="regis_t" value="立即注册">
+                    <p style="text-align: center;color: #757575;margin-top: 10px">最终解释权归百信学车所有</p>
+                   <p style="text-align: center;color: #757575;font-size: 10px">如有预约疑问请致电：17756086208（工作日9:00-18:00）</p>
+                </div>
+               
+            </form>
+           
+        </div>
+    </main>
+    
+    <div class="backtop">
+        <a href="javascript:scrollTo(0,0)"><i class="glyphicon glyphicon-arrow-up"></i></a>
+    </div>
+</div>
+<script>
+    
+    $('.regis_t').click(function () {
+        if ($("#phone[type=text]").val()==""){
+            alert('账号不允许为空！');
+            return false;
+        }
+        if ($('#yzm[type=text]').val()==''){
+            alert('验证码不允许为空！');
+            return false;
+        }
+        if($('.mima1[type=password]').val()==''){
+            alert('密码不允许为空！');
+            return false;
+        }else if($('.mima2[type=password]').val()==''){
+            alert('再次输入密码不允许为空！');
+            return false;
+        }
+        if($('.mima1[type=password]').val() == $('.mima2[type=password]').val() ){
+            $('#register-form').attr("action","{:U('Home/Apitokenmsg/insertReg')}").submit();
+        }else{
+            alert('两次输入密码不一致！');
+            return false;
+        }
+    });
+</script>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    /*var wait=60;
+    function time(o) {
+        var phone = $("#phone").val();
+        var reg = /^1[34578]\d{9}$/;
+        if (!reg.test(phone)){
+            alert('账号有误！');
+            $("#phone[type=text]").focus();
+            return false;
+        }
+        if (wait == 0) {
+            o.removeAttribute("disabled");
+            wait = 60;
+        } else {
+            o.setAttribute("disabled", true);
+            wait--;
+            o.innerHTML=wait+"秒后重新发送";
+            if(wait==0){
+                o.removeAttribute("disabled");
+                o.innerHTML="获取验证码";
+            }
+            setTimeout(function() {
+                time(o)
+            },1000)
+        }
+    }*/
+
+
+    
+
+    $("#getMessage").on("click",function (e) {
+        var phone = $("#phone").val();
+        /*var m = $('input[name=phone]').parents('.inputbg').next();*/
+        var reg = /^1[34578]\d{9}$/;
+        if (!reg.test(phone)){
+            //alert('账号youwu！');
+            $("#phone[type=text]").focus();
+            return false;
+        }else{
+            $.ajax({
+                type:"post",
+                dataType: 'JSON',
+                url:"{:U('Home/Apitokenmsg/sendmsgs')}",
+                data:{'phone':$("#phone").val()},
+                success:function( result ){
+                    console.log(result);
+                    if(result == -1){
+                        
+                        alert("手机号码已注册");
+                        return;
+                    }
+                    if(result == 1){
+                        
+                        alert("验证码已发送");
+                        return;
+                    }
+                    if(result == 0){
+                        
+                        alert("验证码发送失败，请重新发送");
+                        return;
+                    }
+
+                }
+            });
+        }
+            
+    });
+
+
+    //document.getElementById("getMessage").onclick=function(){time(this);}
+    $('#getMessage').on("click",function () {
+        var phone = $("#phone").val();
+        var reg = /^1[34578]\d{9}$/;
+        if (!reg.test(phone)){
+            alert('账号有误！');
+            $("#phone[type=text]").focus();
+            return false;
+        }
+        var btn = $(this);
+        var count = 60;
+        var resend = setInterval(function () {
+            count--;
+            if (count > 0) {
+                btn.text(count + "s后重新获取");
+            } else {
+                clearInterval(resend);
+                btn.text("获取验证码").removeAttr('disabled style');
+            }
+        }, 1000);
+        btn.attr('disabled', true);
+    });
+   
+
+  
+
+    //手机号验证
+
+
+    $('input[name=phone]').keyup(function(){
+        var reg = /^1[34578]\d{9}$/;
+        var phone = $(this).val();
+
+        if(reg.test(phone)){
+            /*m.text("");*/
+            $(".error").text("");
+            $.ajax({
+                url: "{:U('Home/Apitokenmsg/check')}",
+                data: 'phone='+phone,
+                dataType: 'JSON',
+                type:'post',
+                success: function(result){
+                    if(result == -1){   
+                        /*判断手机号是否注册*/
+                        $("#getMessage").unbind('click');
+                        alert('手机号已注册');
+
+                        return false;
+                    }
+                    $("#getMessage").removeAttr('disabled');
+                   
+                    
+                    
+                   
+                }
+            });
+           
+            
+        }else{
+          // $(".error").text("输入的手机号码有误");
+            
+        }
+
+    });
+    
+    
+</script>
+</body>
+</html>

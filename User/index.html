@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>百信学车-个人中心</title>
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/base.css">
+    <link rel="stylesheet" href="__PUBLIC__/App/Index/css/account.css">
+</head>
+<body>
+<div class="shop_wrapper">
+    <header class="acc_header text-center">
+        <volist name="data" id="vo">
+        <div class="shezhi">
+            <a href="{:U('Home/User/set')}?uid={$vo.uid}" style="color:#fff">
+                <i class="glyphicon glyphicon-cog"></i>
+            </a> 
+        </div>
+		<a href="{:U('Home/Msg/index')}">
+        <div class="headerMessage">
+                <img src="__PUBLIC__/App/Index/img/talk.png" alt="">
+        </div>
+		</a>
+        <div class="head_ico">
+            <a href="{:U('Home/User/set')}?uid={$vo.uid}">
+                <img style="height: 100%;width:100%;" class="img-circle img-responsive" src="__PUBLIC__/App/Index/student/{$vo.file}" />
+            </a>
+        </div>
+        <p class="head_name">hi~ {$vo.name}</p>
+        </volist>
+    </header>
+    <main class="acc_m">
+        <section class="bg">
+            <ul>
+               <li>
+                   <a class="clearfix" href="{:U('Home/User/state')}">
+                        <h4 class="pull-left">
+                            <em class="glyphicon glyphicon-calendar"></em>学车进程
+                        </h4>
+                        <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                        <span class="pull-right kemu">{$vo.state}</span>
+                        
+                    </a>
+               </li>
+            </ul>
+        </section>
+       
+        <section class="bg">
+            <ul>
+                <li>
+                    <a class="clearfix" href="{:U('Home/User/myCoach')}">
+                        <h4 class="pull-left"><em class="glyphicon glyphicon-user"></em>我的教练</h4>
+                        <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="clearfix" href="{:U('Home/User/state')}">
+                        <h4 class="pull-left"><em class="glyphicon glyphicon-time"></em>预约考试</h4>
+                        <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="clearfix" href="{:U('Home/User/myApy')}">
+                        <h4 class="pull-left"><em class="glyphicon glyphicon-file"></em>我的订单</h4>
+                        <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                    </a>
+                </li>
+                <!--<li>-->
+                    <!--<a class="clearfix" href="#">-->
+                        <!--<h4 class="pull-left"><em class="glyphicon glyphicon-edit"></em>我的评价</h4>-->
+                        <!--<i class="glyphicon glyphicon-menu-right pull-right"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </section>
+        
+        <section class="bg">
+            <ul>
+                <li>
+                    <span>
+                        <a class="clearfix" href="tel:0551-65555744">
+                            <h4 class="pull-left"><em class="glyphicon glyphicon-phone-alt"></em>客服热线</h4>
+                            <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                        </a>
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <a class="clearfix" href="#">
+                            <h4 class="pull-left"><em class="glyphicon glyphicon-gift"></em>活动中心</h4>
+                            <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                        </a>
+                    </span>
+                </li>
+            </ul>
+        </section>
+        <!-- <div class="message_m">
+            <a href="home.html">
+                <input type="submit" class="regis_t" value="退出登录">
+            </a>
+        </div> -->
+    </main>
+    <footer>
+        <nav class="nav navbar-fixed-bottom foot_fix">
+            <ul class="clearfix">
+                    <li class="pull-left "><a href="{:U('Home/Index/index')}"><i class="glyphicon glyphicon-home"></i>首页</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Coach/coaches')}"><i class="glyphicon glyphicon-thglyphicon glyphicon-th"></i>教练中心</a> </li>
+                    <li class="pull-left"><a href="{:U('Home/Index/car')}">
+                        <i class="glyphicon glyphicon-send"></i>车接车送</a> </li>
+                    <li class="pull-left cur"><a href="{:U('Home/User/index',array('id'=>$_SESSION['userid']))}"><i class="glyphicon glyphicon-user"></i>我的</a></li>
+                </ul>
+        </nav>
+    </footer>
+</div>
+<script src="__PUBLIC__/App/Index/js/jquery.min.js"></script>
+<script src="__PUBLIC__/App/Index/js/bootstrap.min.js"></script>
+</body>
+</html>
